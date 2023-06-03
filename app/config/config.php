@@ -69,7 +69,6 @@
 $dbuser = "root"; /* Database Username */
 $dbpass = ""; /* Database Username Password */
 $host = "localhost"; /* Database Host */
-$db = "blood_donor";  /* Database Name */
+$db = "efurniture_store";  /* Database Name */
 $mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
 date_default_timezone_set("Africa/Nairobi");/* Default Time Zone */
-
