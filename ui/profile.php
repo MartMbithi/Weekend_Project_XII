@@ -44,58 +44,72 @@ require_once('../app/partials/backoffice_head.php');
                                 </a>
                             </li>
                         </ul>
-                        <div class="tab-content" id="myTabContent">
-                            <div role="tabpanel" class="tab-pane fade in active show" id="home" aria-labelledby="home-tab">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">First Name</label>
-                                            <input type="text" required name="admin_first_name" value="<?php echo $rows['admin_first_name']; ?>" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Last Name</label>
-                                            <input type="text" required name="admin_last_name" value="<?php echo $rows['admin_last_name']; ?>" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Contacts</label>
-                                            <input type="text" required name="admin_phone_number" value="<?php echo $rows['admin_phone_number']; ?>" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Email</label>
-                                            <input type="text" required name="admin_email" value="<?php echo $rows['admin_email']; ?>" class="form-control">
-                                        </div>
+                        <?php
+                        $login_id = mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
+                        $fetch_records_sql = mysqli_query(
+                            $mysqli,
+                            "SELECT * FROM administrator a
+                            INNER JOIN login l ON
+                            l.login_id = a.admin_login_id"
+                        );
+                        if (mysqli_num_rows($fetch_records_sql) > 0) {
+                            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                        ?>
+                                <div class="tab-content" id="myTabContent">
+                                    <div role="tabpanel" class="tab-pane fade in active show" id="home" aria-labelledby="home-tab">
+                                        <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">First Name</label>
+                                                    <input type="text" required name="admin_first_name" value="<?php echo $rows['admin_first_name']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Last Name</label>
+                                                    <input type="text" required name="admin_last_name" value="<?php echo $rows['admin_last_name']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Contacts</label>
+                                                    <input type="text" required name="admin_phone_number" value="<?php echo $rows['admin_phone_number']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Email</label>
+                                                    <input type="text" required name="admin_email" value="<?php echo $rows['admin_email']; ?>" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" name="Update_Staff_Profile" class="btn btn-outline-danger">Save</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Update_Staff_Profile" class="btn btn-outline-danger">Save</button>
+
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Login Username</label>
+                                                    <input type="text" required name="login_username" value="<?php echo $rows['login_username']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">New Password</label>
+                                                    <input type="text" required name="new_password" value="<?php echo $rows['new_password']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Confirm Password</label>
+                                                    <input type="text" required name="confirm_password" value="<?php echo $rows['confirm_password']; ?>" class="form-control">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Login Rank</label>
+                                                    <input type="text" readonly required name="" value="<?php echo $rows['login_rank']; ?>" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button type="submit" name="Update_Auth_Details_Staff" class="btn btn-outline-danger">Save</button>
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Login Username</label>
-                                            <input type="text" required name="login_username" value="<?php echo $rows['login_username']; ?>" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">New Password</label>
-                                            <input type="text" required name="new_password" value="<?php echo $rows['new_password']; ?>" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Confirm Password</label>
-                                            <input type="text" required name="confirm_password" value="<?php echo $rows['confirm_password']; ?>" class="form-control">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Login Rank</label>
-                                            <input type="text" readonly required name="" value="<?php echo $rows['login_rank']; ?>" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" name="Update_Auth_Details_Staff" class="btn btn-outline-danger">Save</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                                </div>
+                        <?php }
+                        } ?>
                     </div>
                 </div>
             </div><!-- end col-->
