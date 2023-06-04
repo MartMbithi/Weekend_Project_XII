@@ -165,19 +165,36 @@
             <div class="row">
                 <div class="col-md-12 align-self-center">
                     <div class="ec-main-menu">
-                        <ul>
-                            <li><a href="../">Home</a></li>
-                            <li class="dropdown"><a href="javascript:void(0)">Categories</a>
-                                <ul class="sub-menu">
-                                    <li><a href="categories?cat=">About Us</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="furnitures">Furnitures</a></li>
-                            <li><a href="my_cart">Shopping Cart</a></li>
-                            <li><a href="my_cart">Orders</a></li>
-                            <li><a href="my_payments">Payments</a></li>
-                            <li><a href="my_profile">Profile</a></li>
-                        </ul>
+                        <?php
+                        /* Load This Menu Based On User Login */
+                        if ($_SESSION['login_rank'] == 'Customer') { ?>
+                            <ul>
+                                <li><a href="../">Home</a></li>
+                                <li class="dropdown"><a href="javascript:void(0)">Categories</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="categories?cat=">About Us</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="furnitures">Furnitures</a></li>
+                                <li><a href="my_cart">Shopping Cart</a></li>
+                                <li><a href="my_cart">Orders</a></li>
+                                <li><a href="my_payments">Payments</a></li>
+                                <li><a href="my_profile">Profile</a></li>
+                                <li><a href="logout">End Session</a></li>
+                            </ul>
+                        <?php } else { ?>
+                            <ul>
+                                <li><a href="../">Home</a></li>
+                                <li class="dropdown"><a href="javascript:void(0)">Categories</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="categories?cat=">About Us</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="furnitures">Furnitures</a></li>
+                                <li><a href="register">Register</a></li>
+                                <li><a href="login">Login</a></li>
+                            </ul>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

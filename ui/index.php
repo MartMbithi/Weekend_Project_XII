@@ -1,4 +1,7 @@
 <?php
+session_start();
+require_once('../app/config/config.php');
+require_once('../app/config/checklogin.php');
 require_once('../app/partials/landing_head.php');
 ?>
 
