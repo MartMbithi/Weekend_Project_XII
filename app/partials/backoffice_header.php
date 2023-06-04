@@ -5,8 +5,8 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <a href="dashboard" class="logo">
-                    <i class="zmdi zmdi-group-work icon-c-logo"></i>
-                    <span>eFurniture Store</span>
+                    <i class="zmdi zmdi-shopping-basket"></i>
+                    <span>e - Furniture Store</span>
                 </a>
             </div>
             <!-- End Logo container-->

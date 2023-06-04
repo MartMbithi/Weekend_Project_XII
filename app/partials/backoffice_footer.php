@@ -1,3 +1,3 @@
 <footer class="footer">
-    <?php echo date('Y'); ?> © Online Furniture Store.
+    <?php echo date('Y'); ?> © eFurniture Shop
 </footer>

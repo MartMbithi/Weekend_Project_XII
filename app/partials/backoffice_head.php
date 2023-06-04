@@ -20,13 +20,13 @@
     <link href="../public/backoffice/plugins/switchery/switchery.min.css" rel="stylesheet" />
 
     <!-- Bootstrap CSS -->
-    <link href="public/backoffice/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../public/backoffice/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
     <!-- App CSS -->
-    <link href="public/backoffice/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../public/backoffice/css/style.css" rel="stylesheet" type="text/css" />
 
     <!-- Modernizr js -->
-    <script src="public/backoffice/js/modernizr.min.js"></script>
+    <script src="../public/backoffice/js/modernizr.min.js"></script>
 
     <!-- Sweet Alets -->
 
