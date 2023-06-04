@@ -89,4 +89,22 @@ if (isset($_POST['Update_Auth_Details_Staff'])) {
     }
 }
 
+/* Update Staff Profile */
+if (isset($_POST['Update_Staff_Profile'])) {
+    $login_id = mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
+    $admin_first_name = mysqli_real_escape_string($mysqli, $_POST['admin_first_name']);
+    $admin_last_name = mysqli_real_escape_string($mysqli, $_POST['admin_last_name']);
+    $admin_email = mysqli_real_escape_string($mysqli, $_POST['admin_email']);
+    $admin_phone_number = mysqli_real_escape_string($mysqli, $_POST['admin_phone_number']);
+
+    /* Update */
+    $update_sql = "UPDATE administrator SET admin_first_name = '{$admin_first_name}', admin_last_name = '{$admin_last_name}', admin_email = '{$admin_email}',
+    admin_phone_number = '{$admin_phone_number}' WHERE admin_login_id = '{$login_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Profile updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
