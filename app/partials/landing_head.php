@@ -36,7 +36,7 @@
      <link rel="stylesheet" id="bg-switcher-css" href="../public/landing/css/backgrounds/bg-4.css">
 
      <!-- Sweet alerts -->
-     <link rel="stylesheet" id="bg-switcher-css" href="../public/landing/js/sweetalert2/sweetalert2.min.css">
+     <link rel="stylesheet" href="../public/landing/js/sweetalert2/sweetalert2.min.css">
 
      <?php
         /* Alert Sesion Via Alerts */
