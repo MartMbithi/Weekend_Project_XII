@@ -82,7 +82,6 @@ if (isset($_POST['Login'])) {
         $_SESSION['success'] = 'Logged in successfully';
         header('Location: dashboard');
         exit;
-        
     } else {
         $_SESSION['err'] = 'Incorrect login details';
         header('Location: login');
@@ -90,7 +89,52 @@ if (isset($_POST['Login'])) {
     }
 }
 
-/* Register */
+/* Register - Customer */
+if (isset($_POST['Customer_Signup'])) {
+    $customer_first_name  = mysqli_real_escape_string($mysqli, $_POST['customer_first_name']);
+    $customer_last_name = mysqli_real_escape_string($mysqli, $_POST['customer_last_name']);
+    $customer_email = mysqli_real_escape_string($mysqli, $_POST['customer_email']);
+    $customer_phone_number = mysqli_real_escape_string($mysqli, $_POST['customer_phone_number']);
+    $customer_address = mysqli_real_escape_string($mysqli, $_POST['customer_address']);
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+
+
+    /* Check Passwords  */
+    if ($confirm_password != $new_password) {
+        $err = "Passwords does not match";
+    } else {
+        /* Prevent Duplications */
+        $duplication_checker = "SELECT * FROM login WHERE login_username = '{$customer_email}'";
+        $res = mysqli_query($mysqli, $duplication_checker);
+        if (mysqli_num_rows($res) > 0) {
+            $err = "Email already exists";
+        } else {
+            /* Persist Auth */
+            $auth_sql = "INSERT INTO login (login_username, login_password, login_rank)
+            VALUES('{$customer_email}', '{$login_password}', 'Customer')";
+
+            if (mysqli_query($mysqli, $auth_sql)) {
+                /* Get Customer Login ID */
+                $customer_login_id = mysqli_real_escape_string($mysqli, mysqli_insert_id($mysqli));
+
+                /* Persit Customer Details */
+                $add_customer = "INSERT INTO customer (customer_login_id, customer_first_name, customer_last_name, customer_email, customer_phone_number, customer_address)
+                VALUES('{$customer_login_id}', '{$customer_first_name}', '{$customer_last_name}', '{$customer_email}', '{$customer_phone_number}', '{$customer_address}')";
+
+                if (mysqli_query($mysqli, $add_customer)) {
+                    $_SESSION['success'] = "Your account has been created, proceed to login";
+                    header('Location: login');
+                    exit;
+                } else {
+                    $err = "Failed, please try again";
+                }
+            } else {
+                $err = "Failed to create customer account, try again later";
+            }
+        }
+    }
+}
 
 /* Reset Password Step 1 */
 if (isset($_POST['Reset_Password_1'])) {
