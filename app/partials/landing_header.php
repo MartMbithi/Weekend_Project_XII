@@ -42,96 +42,198 @@
                     </div>
                 </div>
                 <!-- Header Top Language Currency -->
-                <!-- Header Top responsive Action -->
-                <div class="col d-lg-none ">
-                    <div class="ec-header-bottons">
-                        <!-- Header User Start -->
-                        <div class="ec-header-user dropdown">
-                            <button class="dropdown-toggle" data-bs-toggle="dropdown">
-                                <img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" />
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a class="dropdown-item" href="register">Register</a></li>
-                                <li><a class="dropdown-item" href="login">Login</a></li>
-                            </ul>
-                        </div>
-                        <!-- Header User End -->
-
-                        <!-- Header Cart Start -->
-                        <a href="my_cart" class="ec-header-btn ec-header-wishlist">
-                            <div class="header-icon">
-                                <img src="../public/landing/images/icons/cart.svg" class="svg_img header_svg" alt="" />
-                            </div>
-                            <span class="ec-header-count cart-count-lable">3</span>
-                        </a>
-                        <!-- Header menu Start -->
-                        <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
-                            <img src="../public/landing/images/icons/menu.svg" class="svg_img header_svg" alt="icon" />
-                        </a>
-                        <!-- Header menu End -->
-                    </div>
-                </div>
-                <!-- Header Top responsive Action -->
-            </div>
-        </div>
-    </div>
-    <!-- Ec Header Top  End -->
-    <!-- Ec Header Bottom  Start -->
-    <div class="ec-header-bottom d-none d-lg-block">
-        <div class="container position-relative">
-            <div class="row">
-                <div class="ec-flex">
-                    <!-- Ec Header Logo Start -->
-                    <div class="align-self-center">
-                        <div class="header-logo">
-                            <a href="../">
-                                <img src="../public/landing/images/logo/logo.png" alt="Site Logo" />
-                                <img class="dark-logo" src="../public/landing/images/logo/dark-logo.png" alt="Site Logo" style="display: none;" />
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Ec Header Logo End -->
-
-                    <!-- Ec Header Search Start -->
-                    <div class="align-self-center">
-                        <div class="header-search">
-                            <form class="ec-btn-group-form" action="#">
-                                <input class="form-control ec-search-bar" placeholder="Search products..." type="text">
-                                <button class="submit" type="submit">
-                                    <img src="../public/landing/images/icons/search.svg" class="svg_img header_svg" alt="" />
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <!-- Ec Header Search End -->
-
-                    <!-- Ec Header Button Start -->
-                    <div class="align-self-center">
+                <?php if ($_SESSION['login_rank'] == 'Customer') { ?>
+                    <!-- Header Top responsive Action -->
+                    <div class="col d-lg-none ">
                         <div class="ec-header-bottons">
 
                             <!-- Header User Start -->
                             <div class="ec-header-user dropdown">
-                                <button class="dropdown-toggle" data-bs-toggle="dropdown"><img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" /></button>
+                                <button class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" />
+                                </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a class="dropdown-item" href="register.html">Register</a></li>
-                                    <li><a class="dropdown-item" href="checkout.html">Checkout</a></li>
-                                    <li><a class="dropdown-item" href="login.html">Login</a></li>
+                                    <li><a class="dropdown-item" href="my_profile">My profile</a></li>
+                                    <li><a class="dropdown-item" href="logout">Logout</a></li>
                                 </ul>
                             </div>
                             <!-- Header User End -->
+
+                            <!-- Header User Start -->
+                            <div class="ec-header-user dropdown">
+                                <button class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" />
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="my_profile">My profile</a></li>
+                                    <li><a class="dropdown-item" href="logout">Logout</a></li>
+                                </ul>
+                            </div>
+                            <!-- Header User End -->
+
                             <!-- Header Cart Start -->
                             <a href="my_cart" class="ec-header-btn ec-header-wishlist">
-                                <div class="header-icon"><img src="../public/landing/images/icons/cart.svg" class="svg_img header_svg" alt="" /></div>
+                                <div class="header-icon">
+                                    <img src="../public/landing/images/icons/cart.svg" class="svg_img header_svg" alt="" />
+                                </div>
                                 <span class="ec-header-count cart-count-lable">3</span>
                             </a>
-                            <!-- Header Cart End -->
+                            <!-- Header menu Start -->
+                            <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
+                                <img src="../public/landing/images/icons/menu.svg" class="svg_img header_svg" alt="icon" />
+                            </a>
+                            <!-- Header menu End -->
+                        </div>
+                    </div>
+                    <!-- Header Top responsive Action -->
+                <?php } else { ?>
+                    <!-- Header Top responsive Action -->
+                    <div class="col d-lg-none ">
+                        <div class="ec-header-bottons">
+
+                            <!-- Header User Start -->
+                            <div class="ec-header-user dropdown">
+                                <button class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" />
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="register">Register</a></li>
+                                    <li><a class="dropdown-item" href="login">Login</a></li>
+                                </ul>
+                            </div>
+                            <!-- Header User End -->
+
+                            <!-- Header User Start -->
+                            <div class="ec-header-user dropdown">
+                                <button class="dropdown-toggle" data-bs-toggle="dropdown">
+                                    <img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" />
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a class="dropdown-item" href="register">Register</a></li>
+                                    <li><a class="dropdown-item" href="login">Login</a></li>
+                                </ul>
+                            </div>
+                            <!-- Header User End -->
+
+                            <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
+                                <img src="../public/landing/images/icons/menu.svg" class="svg_img header_svg" alt="icon" />
+                            </a>
+                            <!-- Header menu End -->
+                        </div>
+                    </div>
+                    <!-- Header Top responsive Action -->
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <!-- Ec Header Top  End -->
+    <?php if ($_SESSION['login_rank'] == 'Customer') { ?>
+        <!-- Ec Header Bottom  Start -->
+        <div class="ec-header-bottom d-none d-lg-block">
+            <div class="container position-relative">
+                <div class="row">
+                    <div class="ec-flex">
+                        <!-- Ec Header Logo Start -->
+                        <div class="align-self-center">
+                            <div class="header-logo">
+                                <a href="../">
+                                    <img src="../public/landing/images/logo/logo.png" alt="Site Logo" />
+                                    <img class="dark-logo" src="../public/landing/images/logo/dark-logo.png" alt="Site Logo" style="display: none;" />
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Ec Header Logo End -->
+
+                        <!-- Ec Header Search Start -->
+                        <div class="align-self-center">
+                            <div class="header-search">
+                                <form class="ec-btn-group-form" action="#">
+                                    <input class="form-control ec-search-bar" placeholder="Search products..." type="text">
+                                    <button class="submit" type="submit">
+                                        <img src="../public/landing/images/icons/search.svg" class="svg_img header_svg" alt="" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Ec Header Search End -->
+
+                        <!-- Ec Header Button Start -->
+                        <div class="align-self-center">
+                            <div class="ec-header-bottons">
+
+                                <!-- Header User Start -->
+                                <div class="ec-header-user dropdown">
+                                    <button class="dropdown-toggle" data-bs-toggle="dropdown"><img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" /></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a class="dropdown-item" href="my_profile">Profile</a></li>
+                                        <li><a class="dropdown-item" href="logout">Logout</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Header User End -->
+                                <!-- Header Cart Start -->
+                                <a href="my_cart" class="ec-header-btn ec-header-wishlist">
+                                    <div class="header-icon"><img src="../public/landing/images/icons/cart.svg" class="svg_img header_svg" alt="" /></div>
+                                    <span class="ec-header-count cart-count-lable">3</span>
+                                </a>
+                                <!-- Header Cart End -->
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Ec Header Button End -->
+        <!-- Ec Header Button End -->
+    <?php } else { ?>
+        <!-- Ec Header Bottom  Start -->
+        <div class="ec-header-bottom d-none d-lg-block">
+            <div class="container position-relative">
+                <div class="row">
+                    <div class="ec-flex">
+                        <!-- Ec Header Logo Start -->
+                        <div class="align-self-center">
+                            <div class="header-logo">
+                                <a href="../">
+                                    <img src="../public/landing/images/logo/logo.png" alt="Site Logo" />
+                                    <img class="dark-logo" src="../public/landing/images/logo/dark-logo.png" alt="Site Logo" style="display: none;" />
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Ec Header Logo End -->
+
+                        <!-- Ec Header Search Start -->
+                        <div class="align-self-center">
+                            <div class="header-search">
+                                <form class="ec-btn-group-form" action="#">
+                                    <input class="form-control ec-search-bar" placeholder="Search products..." type="text">
+                                    <button class="submit" type="submit">
+                                        <img src="../public/landing/images/icons/search.svg" class="svg_img header_svg" alt="" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Ec Header Search End -->
+
+                        <!-- Ec Header Button Start -->
+                        <div class="align-self-center">
+                            <div class="ec-header-bottons">
+
+                                <!-- Header User Start -->
+                                <div class="ec-header-user dropdown">
+                                    <button class="dropdown-toggle" data-bs-toggle="dropdown"><img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" /></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a class="dropdown-item" href="register">Register</a></li>
+                                        <li><a class="dropdown-item" href="login">Login</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Header User End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ec Header Button End -->
+    <?php } ?>
     <!-- Header responsive Bottom  Start -->
     <div class="ec-header-bottom d-lg-none">
         <div class="container position-relative">
