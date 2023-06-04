@@ -250,16 +250,6 @@
     </div>
     <!-- Header responsive Bottom  End -->
 
-
-
-
-
-
-
-
-
-
-
     <!-- EC Main Menu Start -->
     <div id="ec-main-menu-desk" class="d-none d-lg-block sticky-nav">
         <div class="container position-relative">
@@ -281,7 +271,7 @@
                                 <li><a href="my_cart">Orders</a></li>
                                 <li><a href="my_payments">Payments</a></li>
                                 <li><a href="my_profile">Profile</a></li>
-                                <li><a href="logout">End Session</a></li>
+                                <li><a href="logout">Logout</a></li>
                             </ul>
                         <?php } else { ?>
                             <ul>
@@ -318,12 +308,12 @@
                                 <li><a href="about-us.html">About Us</a></li>
                             </ul>
                         </li>
-                        <li><a href="../">Furnitures</a></li>
-                        <li><a href="../">Shopping Cart</a></li>
-                        <li><a href="../">Orders</a></li>
-                        <li><a href="../">Payments</a></li>
-                        <li><a href="../">Profile</a></li>
-                        <li><a href="../">End Session</a></li>
+                        <li><a href="furnitures">Furnitures</a></li>
+                        <li><a href="">Shopping Cart</a></li>
+                        <li><a href="my_cart">Orders</a></li>
+                        <li><a href="my_payments">Payments</a></li>
+                        <li><a href="my_profile">Profile</a></li>
+                        <li><a href="logout">Logout</a></li>
                     </ul>
                 <?php } else { ?>
                     <ul>

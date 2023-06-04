@@ -57,7 +57,7 @@ require_once('../app/partials/landing_head.php');
                                 </span>
                                 <span class="ec-login-wrap">
                                     <label>Login Password*</label>
-                                    <input type="password" name="password" placeholder="Enter your password" required />
+                                    <input type="password" name="login_password" placeholder="Enter your password" required />
                                 </span>
                                 <span class="ec-login-wrap ec-login-fp">
                                     <label><a href="reset_password">Forgot Password?</a></label>
