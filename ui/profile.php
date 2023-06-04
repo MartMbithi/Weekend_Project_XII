@@ -91,11 +91,11 @@ require_once('../app/partials/backoffice_head.php');
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="">New Password</label>
-                                                    <input type="text" required name="new_password" value="<?php echo $rows['new_password']; ?>" class="form-control">
+                                                    <input type="password" required name="new_password" value="<?php echo $rows['new_password']; ?>" class="form-control">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="">Confirm Password</label>
-                                                    <input type="text" required name="confirm_password" value="<?php echo $rows['confirm_password']; ?>" class="form-control">
+                                                    <input type="password" required name="confirm_password" value="<?php echo $rows['confirm_password']; ?>" class="form-control">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="">Login Rank</label>
