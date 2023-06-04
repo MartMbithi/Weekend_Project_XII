@@ -1,26 +1,26 @@
 <?php
 /*
- *   Crafted On Mon Mar 13 2023
- *   Author Martin (martinezmbithi@gmail.com)
- * 
- *   www.makueni.go.ke
- *   info@makueni.go.ke
+ *   Crafted On Mon May 15 2023
+ *   Author Martin Mbithi (martin@devlan.co.ke)
+ *   
+ *   www.devlan.co.ke
+ *   hello@devlan.co.ke
  *
  *
- *   The Makueni County Government ICT, Education and Internship Department End User License Agreement
- *   Copyright (c) 2022 Makueni County Government
+ *   The Devlan Solutions LTD End User License Agreement
+ *   Copyright (c) 2022 Devlan Solutions LTD
  *
  *
  *   1. GRANT OF LICENSE 
- *   Makueni County Government ICT, Education and Internship Department hereby grants to you (an individual) the revocable, personal, non-exclusive, and nontransferable right to
- *   install and activate this system on one computer solely for your official and non-commercial use,
- *   unless you have purchased a commercial license from Makueni County Government ICT. Sharing this Software with other individuals, 
+ *   Devlan Solutions LTD hereby grants to you (an individual) the revocable, personal, non-exclusive, and nontransferable right to
+ *   install and activate this system on two separated computers solely for your personal and non-commercial use,
+ *   unless you have purchased a commercial license from Devlan Solutions LTD. Sharing this Software with other individuals, 
  *   or allowing other individuals to view the contents of this Software, is in violation of this license.
  *   You may not make the Software available on a network, or in any way provide the Software to multiple users
- *   unless you have first purchased at least a multi-user license from Makueni County Government ICT, Education and Internship Department
+ *   unless you have first purchased at least a multi-user license from Devlan Solutions LTD.
  *
  *   2. COPYRIGHT 
- *   The Software is owned by Makueni County Government ICT, Education and Internship Department and protected by copyright law and international copyright treaties. 
+ *   The Software is owned by Devlan Solutions LTD and protected by copyright law and international copyright treaties. 
  *   You may not remove or conceal any proprietary notices, labels or marks from the Software.
  *
  *
@@ -40,8 +40,8 @@
  *
  *
  *   5. NO OTHER WARRANTIES. 
- *   MAKUENI COUNTY GOVERNMENT ICT, EDUCATION AND INTERNSHIP DEPARTMENT  DOES NOT WARRANT THAT THE SOFTWARE IS ERROR FREE. 
- *   MAKUENI COUNTY GOVERNMENT ICT, EDUCATION AND INTERNSHIP DEPARTMENT SOFTWARE DISCLAIMS ALL OTHER WARRANTIES WITH RESPECT TO THE SOFTWARE, 
+ *   DEVLAN SOLUTIONS LTD  DOES NOT WARRANT THAT THE SOFTWARE IS ERROR FREE. 
+ *   DEVLAN SOLUTIONS LTD SOFTWARE DISCLAIMS ALL OTHER WARRANTIES WITH RESPECT TO THE SOFTWARE, 
  *   EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, 
  *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. 
  *   SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES OR LIMITATIONS
@@ -57,13 +57,14 @@
  *   affect the validity of the remaining portions of this license.
  *
  *
- *   7. NO LIABILITY FOR CONSEQUENTIAL DAMAGES IN NO EVENT SHALL MAKUENI COUNTY GOVERNMENT ICT, EDUCATION AND INTERNSHIP DEPARTMENT OR ITS SUPPLIERS BE LIABLE TO YOU FOR ANY
+ *   7. NO LIABILITY FOR CONSEQUENTIAL DAMAGES IN NO EVENT SHALL DEVLAN SOLUTIONS LTD OR ITS SUPPLIERS BE LIABLE TO YOU FOR ANY
  *   CONSEQUENTIAL, SPECIAL, INCIDENTAL OR INDIRECT DAMAGES OF ANY KIND ARISING OUT OF THE DELIVERY, PERFORMANCE OR 
- *   USE OF THE SOFTWARE, EVEN IFMAKUENI COUNTY GOVERNMENT ICT, EDUCATION AND INTERNSHIP DEPARTMENT HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
- *   IN NO EVENT WILL MAKUENI COUNTY GOVERNMENT ICT, EDUCATION AND INTERNSHIP DEPARTMENT  LIABILITY FOR ANY CLAIM, WHETHER IN CONTRACT 
+ *   USE OF THE SOFTWARE, EVEN IF DEVLAN SOLUTIONS LTD HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
+ *   IN NO EVENT WILL DEVLAN SOLUTIONS LTD  LIABILITY FOR ANY CLAIM, WHETHER IN CONTRACT 
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+
 ?>
 
 <!-- Init Sweet Alerts -->

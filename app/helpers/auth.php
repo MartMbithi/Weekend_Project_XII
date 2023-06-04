@@ -112,7 +112,7 @@ if (isset($_POST['Customer_Signup'])) {
         } else {
             /* Persist Auth */
             $auth_sql = "INSERT INTO login (login_username, login_password, login_rank)
-            VALUES('{$customer_email}', '{$login_password}', 'Customer')";
+            VALUES('{$customer_email}', '{$new_password}', 'Customer')";
 
             if (mysqli_query($mysqli, $auth_sql)) {
                 /* Get Customer Login ID */
