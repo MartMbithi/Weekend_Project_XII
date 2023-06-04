@@ -67,7 +67,7 @@
 
 
 /* Update Passwords Details */
-if (isset($_POST['Update_Auth_Details'])) {
+if (isset($_POST['Update_Auth_Details_Staff'])) {
     $login_id = mysqli_real_escape_string($mysqli, $_SESSION['login_id']);
     $login_username = mysqli_real_escape_string($mysqli, $_POST['login_username']);
     $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
