@@ -136,6 +136,12 @@ if (isset($_POST['Customer_Signup'])) {
     }
 }
 
+
+/* Register - Furniture Seller  */
+if (isset($_POST['Seller_Signup'])) {
+    
+}
+
 /* Reset Password Step 1 */
 if (isset($_POST['Reset_Password_1'])) {
     $login_username  = mysqli_real_escape_string($mysqli, $_POST['login_username']);
