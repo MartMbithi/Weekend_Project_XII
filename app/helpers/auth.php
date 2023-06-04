@@ -78,10 +78,23 @@ if (isset($_POST['Login'])) {
         $_SESSION['login_id'] = $row['login_id'];
         $_SESSION['login_rank'] = $row['login_rank'];
 
-        /* Bind success variable via session */
-        $_SESSION['success'] = 'Logged in successfully';
-        header('Location: dashboard');
-        exit;
+        /* Seperate After Auth Pages */
+        if ($row['login_rank'] == 'Customer') {
+            /* Customer Pages */
+            $_SESSION['success'] = 'Logged in successfully';
+            header('Location: index');
+            exit;
+        } else if ($row['login_rank'] == 'Seller') {
+            /* Seller Pages */
+            $_SESSION['success'] = 'Logged in successfully';
+            header('Location: seller_home');
+            exit;
+        } else {
+            /* Admin Pages */
+            $_SESSION['success'] = 'Logged in successfully';
+            header('Location: dashboard');
+            exit;
+        }
     } else {
         $_SESSION['err'] = 'Incorrect login details';
         header('Location: login');
