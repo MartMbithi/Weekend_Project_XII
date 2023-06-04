@@ -13,7 +13,6 @@ require_once('../app/partials/landing_head.php');
     <!-- Header End  -->
 
 
-
     <!-- Main Slider Start -->
     <div class="sticky-header-next-sec ec-main-slider section section-space-pb">
         <div class="ec-slider swiper-container main-slider-nav main-slider-dot">
