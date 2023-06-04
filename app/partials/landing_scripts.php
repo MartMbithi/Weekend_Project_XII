@@ -19,3 +19,4 @@
 <script src="../public/landing/js/plugins/jquery.sticky-sidebar.js"></script>
 <script src="../public/landing/js/vendor/index.js"></script>
 <script src="../public/landing/js/main.js"></script>
+<script src="../public/landinng/js/sweetalert2/sweetalert2.min.js"></script>

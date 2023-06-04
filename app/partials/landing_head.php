@@ -34,4 +34,20 @@
 
      <!-- Background css -->
      <link rel="stylesheet" id="bg-switcher-css" href="../public/landing/css/backgrounds/bg-4.css">
+
+     <!-- Sweet alerts -->
+     <link rel="stylesheet" id="bg-switcher-css" href="../public/landing/js/sweetalert2/sweetalert2.min.css">
+
+     <?php
+        /* Alert Sesion Via Alerts */
+        if (isset($_SESSION['success'])) {
+            $success = $_SESSION['success'];
+            unset($_SESSION['success']);
+        }
+        /* Alert Sesion Via Alerts */
+        if (isset($_SESSION['err'])) {
+            $err = $_SESSION['err'];
+            unset($_SESSION['err']);
+        }
+        ?>
  </head>
