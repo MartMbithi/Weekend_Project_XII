@@ -65,3 +65,68 @@
  *
  */
 
+/* Customers */
+$query = "SELECT COUNT(*) FROM customer";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($customers);
+$stmt->fetch();
+$stmt->close();
+
+/* Staffs */
+$query = "SELECT COUNT(*) FROM administrator";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($staffs);
+$stmt->fetch();
+$stmt->close();
+
+/* Sellers */
+$query = "SELECT COUNT(*) FROM furniture_seller";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($sellers);
+$stmt->fetch();
+$stmt->close();
+
+/* Furnitures */
+$query = "SELECT COUNT(*) FROM furniture";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($furniture);
+$stmt->fetch();
+$stmt->close();
+
+
+/* Total Orders */
+$query = "SELECT COUNT(*) FROM orders";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($total_orders);
+$stmt->fetch();
+$stmt->close();
+
+/* On Transit Orders */
+$query = "SELECT COUNT(*) FROM orders WHERE order_status = 'On Transit'";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($on_transit_orders);
+$stmt->fetch();
+$stmt->close();
+
+/* Delivered Orders */
+$query = "SELECT COUNT(*) FROM orders WHERE order_status = 'Delivered'";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($delivered_orders);
+$stmt->fetch();
+$stmt->close();
+
+
+/* Revenue */
+$query = "SELECT SUM(payment_amount) FROM payment";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($revenue);
+$stmt->fetch();
+$stmt->close();
