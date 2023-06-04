@@ -12,6 +12,9 @@
 
     <!-- App title -->
     <title>eFurniture Store - One Stop Shop For All Custom Furnitures</title>
+    <!-- DataTables -->
+    <link href="../public/backoffice/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../public/backoffice/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="../public/backoffice/plugins/morris/morris.css">
