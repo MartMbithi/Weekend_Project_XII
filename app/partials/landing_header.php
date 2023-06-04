@@ -103,18 +103,6 @@
                             </div>
                             <!-- Header User End -->
 
-                            <!-- Header User Start -->
-                            <div class="ec-header-user dropdown">
-                                <button class="dropdown-toggle" data-bs-toggle="dropdown">
-                                    <img src="../public/landing/images/icons/user.svg" class="svg_img header_svg" alt="" />
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a class="dropdown-item" href="register">Register</a></li>
-                                    <li><a class="dropdown-item" href="login">Login</a></li>
-                                </ul>
-                            </div>
-                            <!-- Header User End -->
-
                             <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
                                 <img src="../public/landing/images/icons/menu.svg" class="svg_img header_svg" alt="icon" />
                             </a>
@@ -261,6 +249,17 @@
         </div>
     </div>
     <!-- Header responsive Bottom  End -->
+
+
+
+
+
+
+
+
+
+
+
     <!-- EC Main Menu Start -->
     <div id="ec-main-menu-desk" class="d-none d-lg-block sticky-nav">
         <div class="container position-relative">
