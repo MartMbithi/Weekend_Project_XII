@@ -95,7 +95,7 @@ require_once('../app/partials/landing_head.php');
                                                     </span>
                                                     <span class="ec-register-wrap">
                                                         <label>Address</label>
-                                                        <input type="text" name="customer_address" required />
+                                                        <input type="text" name="customer_address"  />
                                                     </span>
                                                     <button class="btn btn-primary" name="Customer_Signup" type="submit">Register</button>
                                                     </span>
