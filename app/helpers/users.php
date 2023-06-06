@@ -142,3 +142,19 @@ if (isset($_POST['Add_Staff_Details'])) {
         }
     }
 }
+
+/* Update Staff */
+
+/* Delete Staff */
+if (isset($_POST['Delete_Staff_Details'])) {
+    $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM login WHERE login_id = '{$login_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Staff details deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
