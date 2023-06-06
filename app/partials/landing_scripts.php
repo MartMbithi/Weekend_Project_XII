@@ -1,6 +1,5 @@
 <!-- Vendor JS -->
 <script src="../public/landing/js/vendor/jquery-3.5.1.min.js"></script>
-
 <script src="../public/landing/js/vendor/popper.min.js"></script>
 <script src="../public/landing/js/vendor/bootstrap.min.js"></script>
 <script src="../public/landing/js/vendor/jquery-migrate-3.3.0.min.js"></script>
