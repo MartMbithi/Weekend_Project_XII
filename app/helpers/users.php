@@ -121,24 +121,31 @@ if (isset($_POST['Add_Staff_Details'])) {
     if ($new_password != $confirm_password) {
         $err = "Password does not match";
     } else {
-        /* Persist Auth */
-        $auth_sql = "INSERT INTO login (login_username, login_password, login_rank)
-        VALUES('{$admin_email}', '{$new_password}', 'Admin')";
+        /* Duplication checker */
+        $duplication_checker = "SELECT * FROM login WHERE login_username = '{$admin_email}'";
+        $res = mysqli_query($mysqli, $duplication_checker);
+        if (mysqli_num_rows($res) > 0) {
+            $err = "Email already exists";
+        } else {
+            /* Persist Auth */
+            $auth_sql = "INSERT INTO login (login_username, login_password, login_rank)
+            VALUES('{$admin_email}', '{$new_password}', 'Admin')";
 
-        if (mysqli_query($mysqli, $auth_sql)) {
-            $admin_login_id = mysqli_real_escape_string($mysqli, mysqli_insert_id($mysqli));
+            if (mysqli_query($mysqli, $auth_sql)) {
+                $admin_login_id = mysqli_real_escape_string($mysqli, mysqli_insert_id($mysqli));
 
-            /* Persit Admin */
-            $admin_sql = "INSERT INTO administrator (admin_login_id, admin_first_name, admin_last_name, admin_email, admin_phone_number)
+                /* Persit Admin */
+                $admin_sql = "INSERT INTO administrator (admin_login_id, admin_first_name, admin_last_name, admin_email, admin_phone_number)
             VALUES('{$admin_login_id}', '{$admin_first_name}', '{$admin_last_name}', '{$admin_email}', '{$admin_phone_number}')";
 
-            if (mysqli_query($mysqli, $admin_sql)) {
-                $success = "Staff account created";
+                if (mysqli_query($mysqli, $admin_sql)) {
+                    $success = "Staff account created";
+                } else {
+                    $err = "Failed, please try again";
+                }
             } else {
                 $err = "Failed, please try again";
             }
-        } else {
-            $err = "Failed, please try again";
         }
     }
 }

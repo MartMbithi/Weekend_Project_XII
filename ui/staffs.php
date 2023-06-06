@@ -120,7 +120,7 @@ require_once('../app/partials/backoffice_head.php');
                                         </tr>
                                 <?php
                                         $cnt = $cnt + 1;
-                                        require_once('../app/modals/staffs.php');
+                                        include('../app/modals/staffs.php');
                                     }
                                 } ?>
                             </tbody>
