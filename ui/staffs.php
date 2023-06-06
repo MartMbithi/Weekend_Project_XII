@@ -24,10 +24,18 @@ require_once('../app/partials/backoffice_head.php');
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-title-box">
+                        <div class="btn-group float-right m-t-15">
+                            <button type="button" class="btn btn-custom dropdown-toggle waves-effect waves-light" data-toggle="modal" aria-expanded="false">Add Staff
+                                <span class="m-l-5"><i class="fa fa-plus"></i></span>
+                            </button>
+                        </div>
                         <h4 class="page-title">Staffs</h4>
                     </div>
                 </div>
             </div>
+            <!-- Add Modal -->
+            
+            <!-- End Modal -->
             <div class="row">
                 <div class="col-lg-12 col-xl-12">
                     <div class="card-box">
@@ -64,7 +72,10 @@ require_once('../app/partials/backoffice_head.php');
                                                 <a data-toggle="modal" href="#delete_<?php echo $rows['admin_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
                                             </td>
                                         </tr>
-                                <?php }
+                                <?php
+                                        $cnt = $cnt + 1;
+                                        require_once('../app/modals/staffs.php');
+                                    }
                                 } ?>
                             </tbody>
                         </table>
