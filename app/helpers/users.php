@@ -144,7 +144,23 @@ if (isset($_POST['Add_Staff_Details'])) {
 }
 
 /* Update Staff */
+if (isset($_POST['Update_Staff_Details'])) {
+    $admin_id = mysqli_real_escape_string($mysqli, $_POST['admin_id']);
+    $admin_first_name = mysqli_real_escape_string($mysqli, $_POST['admin_first_name']);
+    $admin_last_name = mysqli_real_escape_string($mysqli, $_POST['admin_last_name']);
+    $admin_email = mysqli_real_escape_string($mysqli, $_POST['admin_email']);
+    $admin_phone_number = mysqli_real_escape_string($mysqli, $_POST['admin_phone_number']);
 
+    /* Persist */
+    $update_sql = "UPDATE administrator SET admin_first_name = '{$admin_first_name}', admin_last_name = '{$admin_last_name}',
+    admin_email = '{$admin_email}', admin_phone_number ='{$admin_phone_number}' WHERE admin_id = '{$admin_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Staff details updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 /* Delete Staff */
 if (isset($_POST['Delete_Staff_Details'])) {
     $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
