@@ -260,3 +260,49 @@ if (isset($_POST['Delete_Seller'])) {
         $err = "Failed, please try again";
     }
 }
+
+
+/* Add Customer */
+if (isset($_POST['Add_Customer'])) {
+    $customer_first_name = mysqli_real_escape_string($mysqli, $_POST['customer_first_name']);
+    $customer_last_name = mysqli_real_escape_string($mysqli, $_POST['customer_last_name']);
+    $customer_email = mysqli_real_escape_string($mysqli, $_POST['customer_email']);
+    $customer_phone_number = mysqli_real_escape_string($mysqli, $_POST['customer_phone_number']);
+    $customer_address = mysqli_real_escape_string($mysqli, $_POST['customer_address']);
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+
+    /* Check Passwords */
+    if ($confirm_password != $new_password) {
+        $err = "Passwords does not match";
+    }
+    /* Prevent duplications */
+    $duplication_checker = "SELECT * FROM login WHERE login_username = '{$customer_email}'";
+    $res = mysqli_query($mysqli, $duplication_checker);
+    if (mysqli_num_rows($res) > 0) {
+        $err = "Email already exists";
+    } else {
+        /* Persist Auth */
+        $auth_sql = "INSERT INTO login (login_username, login_rank, login_password) VALUES('{$customer_email}', 'Customer', '{$confirm_password}')";
+        if (mysqli_query($mysqli, $auth_sql)) {
+            $customer_login_id  = mysqli_real_escape_string($mysqli, mysqli_insert_id($mysqli));
+
+            /* Persist Cutomer Details */
+            $add_customer = "INSERT INTO customer (customer_login_id, customer_first_name, customer_last_name, customer_email, customer_phone_number, customer_address)
+            VALUES('{$customer_login_id}', '{$customer_first_name}', '{$customer_last_name}', '{$customer_email}', '{$customer_phone_number}', '{$customer_address}')";
+
+            if (mysqli_query($mysqli, $add_customer)) {
+                $success = "Account created";
+            } else {
+                $err = "Failed, please try again";
+            }
+        } else {
+            $err = "Failed, please try again";
+        }
+    }
+}
+
+
+/* Update Customer */
+
+/* Delete Customer */
