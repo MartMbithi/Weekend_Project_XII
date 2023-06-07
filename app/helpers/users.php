@@ -304,5 +304,36 @@ if (isset($_POST['Add_Customer'])) {
 
 
 /* Update Customer */
+if (isset($_POST['Update_Customer'])) {
+    $customer_id = mysqli_real_escape_string($mysqli, $_POST['customer_id']);
+    $customer_first_name = mysqli_real_escape_string($mysqli, $_POST['customer_first_name']);
+    $customer_last_name = mysqli_real_escape_string($mysqli, $_POST['customer_last_name']);
+    $customer_email = mysqli_real_escape_string($mysqli, $_POST['customer_email']);
+    $customer_phone_number = mysqli_real_escape_string($mysqli, $_POST['customer_phone_number']);
+    $customer_address = mysqli_real_escape_string($mysqli, $_POST['customer_address']);
+
+    /* Persist */
+    $update_sql = "UPDATE customer SET customer_first_name = '{$customer_first_name}', customer_last_name = '{$customer_last_name}',
+    customer_email = '{$customer_email}', customer_phone_number = '{$customer_phone_number}', customer_address = '{$customer_address}'
+    WHERE customer_id = '{$customer_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Details updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 /* Delete Customer */
+if (isset($_POST['Delete_Customer'])) {
+    $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
+
+    /* Delete */
+    $delete_sql = "DELETE FROM login WHERE login_id = '{$login_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Details deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
