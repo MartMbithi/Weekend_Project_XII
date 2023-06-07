@@ -25,11 +25,11 @@ require_once('../app/partials/backoffice_head.php');
                 <div class="col-sm-12">
                     <div class="page-title-box">
                         <div class="btn-group float-right m-t-15">
-                            <button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-custom waves-effect waves-light" aria-expanded="false">Add Staff
+                            <button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-custom waves-effect waves-light" aria-expanded="false">Add Customer
                                 <span class="m-l-5"><i class="fa fa-plus"></i></span>
                             </button>
                         </div>
-                        <h4 class="page-title">Staffs</h4>
+                        <h4 class="page-title">Customers</h4>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@ require_once('../app/partials/backoffice_head.php');
                     <div class="modal-content">
                         <div class="modal-header align-items-center">
                             <div class="text-center">
-                                <h6 class="mb-0 text-bold">Register new system user</h6>
+                                <h6 class="mb-0 text-bold">Register new customer</h6>
                             </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -50,19 +50,19 @@ require_once('../app/partials/backoffice_head.php');
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label for="">First Name</label>
-                                        <input type="text" required name="admin_first_name" class="form-control">
+                                        <input type="text" required name="customer_first_name" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Last Name</label>
-                                        <input type="text" required name="admin_last_name" class="form-control">
+                                        <input type="text" required name="customer_last_name" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Contacts</label>
-                                        <input type="text" required name="admin_phone_number" class="form-control">
+                                        <input type="text" required name="customer_email" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Email</label>
-                                        <input type="text" required name="admin_email" class="form-control">
+                                        <input type="text" required name="customer_phone_number" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Login Password</label>
@@ -72,9 +72,13 @@ require_once('../app/partials/backoffice_head.php');
                                         <label for="">Confirm Password</label>
                                         <input type="password" required name="confirm_password" class="form-control">
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="">Address</label>
+                                        <input type="text" required name="customer_address" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="text-right">
-                                    <button type="submit" name="Add_Staff_Details" class="btn btn-outline-danger">Save</button>
+                                    <button type="submit" name="Add_Customer" class="btn btn-outline-danger">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -92,17 +96,18 @@ require_once('../app/partials/backoffice_head.php');
                                     <th>Names</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
+                                    <th>Address</th>
                                     <th>Manage</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <?php
-                                /* Pull Staffs */
+                                /* Pull Customer Details */
                                 $fetch_records_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM administrator a
-                                    INNER JOIN login l ON l.login_id = a.admin_login_id"
+                                    "SELECT * FROM customer c
+                                    INNER JOIN login l ON l.login_id = c.customer_login_id"
                                 );
                                 $cnt = $cnt + 1;
                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
@@ -110,17 +115,18 @@ require_once('../app/partials/backoffice_head.php');
                                 ?>
                                         <tr>
                                             <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $rows['admin_first_name'] . ' ' . $rows['admin_last_name']; ?></td>
-                                            <td><?php echo $rows['admin_email']; ?></td>
-                                            <td><?php echo $rows['admin_phone_number']; ?></td>
+                                            <td><?php echo $rows['customer_first_name'] . ' ' . $rows['customer_last_name']; ?></td>
+                                            <td><?php echo $rows['customer_email']; ?></td>
+                                            <td><?php echo $rows['customer_phone_number']; ?></td>
+                                            <td><?php echo $rows['customer_address']; ?></td>
                                             <td>
-                                                <a data-toggle="modal" href="#update_<?php echo $rows['admin_id']; ?>" class="badge badge-pill badge-warning"><em class="fa fa-edit"></em> Edit</a>
-                                                <a data-toggle="modal" href="#delete_<?php echo $rows['admin_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
+                                                <a data-toggle="modal" href="#update_<?php echo $rows['customer_id']; ?>" class="badge badge-pill badge-warning"><em class="fa fa-edit"></em> Edit</a>
+                                                <a data-toggle="modal" href="#delete_<?php echo $rows['customer_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
                                             </td>
                                         </tr>
                                 <?php
                                         $cnt = $cnt + 1;
-                                        include('../app/modals/staffs.php');
+                                        include('../app/modals/customers.php');
                                     }
                                 } ?>
                             </tbody>
