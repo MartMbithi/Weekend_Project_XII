@@ -57,7 +57,7 @@
                     <!-- Hide This -->
                     <input type="hidden" name="login_id" value="<?php echo $rows['login_id']; ?>">
                     <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
-                    <button type="submit" name="Delete_Seller" class="text-center btn btn-danger">Yes, Delete</button>
+                    <button type="submit" name="Delete_Customer" class="text-center btn btn-danger">Yes, Delete</button>
                 </div>
             </form>
         </div>

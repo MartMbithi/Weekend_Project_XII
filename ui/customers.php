@@ -58,11 +58,11 @@ require_once('../app/partials/backoffice_head.php');
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Contacts</label>
-                                        <input type="text" required name="customer_email" class="form-control">
+                                        <input type="text" required name="customer_phone_number" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Email</label>
-                                        <input type="text" required name="customer_phone_number" class="form-control">
+                                        <input type="email" required name="customer_email" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="">Login Password</label>
