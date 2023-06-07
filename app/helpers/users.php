@@ -185,6 +185,45 @@ if (isset($_POST['Delete_Staff_Details'])) {
 
 /* Add Seller */
 if (isset($_POST['Add_Seller'])) {
+    $seller_first_name = mysqli_real_escape_string($mysqli, $_POST['seller_first_name']);
+    $seller_last_name = mysqli_real_escape_string($mysqli, $_POST['seller_last_name']);
+    $seller_email = mysqli_real_escape_string($mysqli, $_POST['seller_email']);
+    $seller_phone_number = mysqli_real_escape_string($mysqli, $_POST['seller_phone_number']);
+    $seller_address = mysqli_real_escape_string($mysqli, $_POST['seller_address']);
+    $login_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['login_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+
+    /* Check Passwords */
+    if ($confirm_password != $new_password) {
+        $err = "Passwords does not match";
+    } else {
+        /* Prevent duplications */
+        $duplication_checker = "SELECT * FROM login WHERE login_username = '{$seller_email}'";
+        $res = mysqli_query($mysqli, $duplication_checker);
+        if (mysqli_num_rows($res) > 0) {
+            $err = "Email already exists";
+        } else {
+            /* Persit auth */
+            $auth_sql = "INSERT INTO login (login_username, login_rank, login_password) VALUES('{$seller_email}', 'Seller', '{$confirm_password}')";
+
+            if (mysqli_query($mysqli, $auth_sql)) {
+                /* Get Seller Auth Login Id */
+                $seller_login_id = mysqli_real_escape_string($mysqli, mysqli_insert_id($mysqli));
+
+                /* Persist Seller Details */
+                $seller_sql = "INSERT INTO furniture_seller(seller_login_id, seller_first_name, seller_last_name, seller_email, seller_phone_number, seller_address)
+                VALUES('{$seller_login_id}', '{$seller_first_name}', '{$seller_last_name}', '{$seller_email}', '{$seller_phone_number}', '{$seller_address}')";
+
+                if (mysqli_query($mysqli, $seller_sql)) {
+                    $success = "Account created";
+                } else {
+                    $err = "Failed, please try again";
+                }
+            } else {
+                $err = "Failed, please try again";
+            }
+        }
+    }
 }
 
 /* Update Seller */
