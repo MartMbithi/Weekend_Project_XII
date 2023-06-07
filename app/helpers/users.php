@@ -190,7 +190,7 @@ if (isset($_POST['Add_Seller'])) {
     $seller_email = mysqli_real_escape_string($mysqli, $_POST['seller_email']);
     $seller_phone_number = mysqli_real_escape_string($mysqli, $_POST['seller_phone_number']);
     $seller_address = mysqli_real_escape_string($mysqli, $_POST['seller_address']);
-    $login_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['login_password'])));
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
     $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
 
     /* Check Passwords */
