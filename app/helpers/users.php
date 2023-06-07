@@ -168,6 +168,7 @@ if (isset($_POST['Update_Staff_Details'])) {
         $err = "Failed, please try again";
     }
 }
+
 /* Delete Staff */
 if (isset($_POST['Delete_Staff_Details'])) {
     $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
@@ -177,6 +178,45 @@ if (isset($_POST['Delete_Staff_Details'])) {
 
     if (mysqli_query($mysqli, $delete_sql)) {
         $success = "Staff details deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
+
+/* Add Seller */
+if (isset($_POST['Add_Seller'])) {
+}
+
+/* Update Seller */
+if (isset($_POST['Update_Seller'])) {
+    $seller_id = mysqli_real_escape_string($mysqli, $_POST['seller_id']);
+    $seller_first_name = mysqli_real_escape_string($mysqli, $_POST['seller_first_name']);
+    $seller_last_name = mysqli_real_escape_string($mysqli, $_POST['seller_last_name']);
+    $seller_email = mysqli_real_escape_string($mysqli, $_POST['seller_email']);
+    $seller_phone_number = mysqli_real_escape_string($mysqli, $_POST['seller_phone_number']);
+    $seller_address = mysqli_real_escape_string($mysqli, $_POST['seller_address']);
+
+    /* Persist */
+    $update_sql = "UPDATE furniture_seller SET seller_first_name ='{$seller_first_name}', seller_last_name = '{$seller_last_name}',
+    seller_email = '{$seller_email}', seller_phone_number = '{$seller_phone_number}', seller_address = '{$seller_address}'
+    WHERE seller_id = '{$seller_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Details updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
+
+/* Delete Seller */
+if (isset($_POST['Delete_Seller'])) {
+    $login_id = mysqli_real_escape_string($mysqli, $_POST['login_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM login WHERE login_id = '{$login_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Details deleted";
     } else {
         $err = "Failed, please try again";
     }
