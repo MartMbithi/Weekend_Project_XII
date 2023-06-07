@@ -11,7 +11,34 @@
                 </button>
             </div>
             <div class="modal-body">
-               
+                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">First Name</label>
+                            <input type="hidden" value="<?php echo $rows['customer_id']; ?>" required name="customer_id" class="form-control">
+                            <input type="text" value="<?php echo $rows['customer_first_name']; ?>" required name="customer_first_name" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Last Name</label>
+                            <input type="text" value="<?php echo $rows['customer_last_name']; ?>" required name="customer_last_name" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Contacts</label>
+                            <input type="text" value="<?php echo $rows['customer_phone_number']; ?>" required name="customer_phone_number" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Email</label>
+                            <input type="text" value="<?php echo $rows['customer_email']; ?>" required name="customer_email" class="form-control">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="">Address</label>
+                            <input type="text" value="<?php echo $rows['customer_address']; ?>" required name="customer_address" class="form-control">
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" name="Update_Customer" class="btn btn-outline-danger">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
