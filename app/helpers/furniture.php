@@ -80,9 +80,36 @@ if (isset($_POST['Add_Category'])) {
     }
 }
 
- /* Update Category */
+/* Update Category */
+if (isset($_POST['Update_Category'])) {
+    $category_id = mysqli_real_escape_string($mysqli, $_POST['category_id']);
+    $category_name = mysqli_real_escape_string($mysqli, $_POST['category_name']);
+    $category_description = mysqli_real_escape_string($mysqli, $_POST['category_description']);
 
- /* Delete Category */
+    /* Persist */
+    $update_sql = "UPDATE furniture_category SET category_name = '{$category_name}', category_description = '{$category_description}'
+    WHERE category_id = '{$category_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success  = "Category updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
+
+/* Delete Category */
+if (isset($_POST['Delete_Category'])) {
+    $category_id = mysqli_real_escape_string($mysqli, $_POST['category_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM furniture_category WHERE category_id = '{$category_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success  = "Category deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 
  /* ********************************************************* */
