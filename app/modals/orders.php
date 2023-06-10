@@ -54,7 +54,38 @@
                 </button>
             </div>
             <div class="modal-body">
-
+                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="">Items quantity</label>
+                            <input type="hidden" required name="order_id" value="<?php echo $rows['order_id']; ?>" class="form-control">
+                            <input type="hidden" required name="furniture_price" value="<?php echo $rows['furniture_price']; ?>" class="form-control">
+                            <input type="number" required name="order_qty" value="<?php echo $rows['order_qty']; ?>" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="">Delivery status </label>
+                            <select type="text" required name="order_delivery_status" class="form-control">
+                                <?php if ($rows['order_delivery_status'] == 'Pending') { ?>
+                                    <option>Pending</option>
+                                    <option>On Transit</option>
+                                    <option>Delivered</option>
+                                <?php } else if ($rows['order_delivery_status'] == 'On Transit') { ?>
+                                    <option>On Transit</option>
+                                    <option>Delivered</option>
+                                <?php } else { ?>
+                                    <option>Delivered</option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="">Delivery date</label>
+                            <input type="date" required name="order_estimated_delivery_date" value="<?php echo date('Y-m-d', strtotime($rows['order_estimated_delivery_date'])); ?>" class="form-control">
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" name="Update_Order" class="btn btn-outline-danger">Update Order</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

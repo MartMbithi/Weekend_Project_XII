@@ -46,7 +46,6 @@ require_once('../app/partials/backoffice_head.php');
                                     <th>Manage</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 <?php
                                 /* Pull Orders */

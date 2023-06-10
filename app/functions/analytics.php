@@ -107,7 +107,7 @@ $stmt->fetch();
 $stmt->close();
 
 /* On Transit Orders */
-$query = "SELECT COUNT(*) FROM orders WHERE order_status = 'On Transit'";
+$query = "SELECT COUNT(*) FROM orders WHERE order_delivery_status = 'On Transit'";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($on_transit_orders);
@@ -115,7 +115,7 @@ $stmt->fetch();
 $stmt->close();
 
 /* Delivered Orders */
-$query = "SELECT COUNT(*) FROM orders WHERE order_status = 'Delivered'";
+$query = "SELECT COUNT(*) FROM orders WHERE order_delivery_status = 'Delivered'";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($delivered_orders);
