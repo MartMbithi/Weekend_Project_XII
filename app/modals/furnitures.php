@@ -1,6 +1,6 @@
 <!-- View -->
 <div class="modal fade fixed-right" id="view_<?php echo $rows['furniture_id']; ?>" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header align-items-center">
                 <div class="text-center">
@@ -11,7 +11,32 @@
                 </button>
             </div>
             <div class="modal-body">
-
+                <p class="text-muted" align="justify">
+                    <?php echo $rows['furniture_description']; ?>
+                </p>
+                <hr>
+                <div class="port text-center m-b-20">
+                    <div class="portfolioContainer">
+                        <?php
+                        $fetch_images_sql = mysqli_query(
+                            $mysqli,
+                            "SELECT * FROM furniture_images WHERE 
+                            furniture_image_furniture_id = '{$rows['furniture_id']}'"
+                        );
+                        if (mysqli_num_rows($fetch_images_sql) > 0) {
+                            while ($images = mysqli_fetch_array($fetch_images_sql)) {
+                        ?>
+                                <div class="gallery-box natural">
+                                    <div class="thumb">
+                                        <a href="../storage/<?php echo $images['furniture_image']; ?>" class="image-popup" title="Screenshot-1">
+                                            <img src="../storage/<?php echo $images['furniture_image']; ?>" class="thumb-img" alt="work-thumbnail">
+                                        </a>
+                                    </div>
+                                </div>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
