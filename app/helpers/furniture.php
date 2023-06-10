@@ -186,8 +186,35 @@ if (isset($_POST['Add_Furniture'])) {
     }
 }
 
- /* Update Furniture */
+/* Update Furniture */
+if (isset($_POST['Update_Furniture'])) {
+    $furniture_id = mysqli_real_escape_string($mysqli, $_POST['furniture_id']);
+    $furniture_name = mysqli_real_escape_string($mysqli, $_POST['furniture_name']);
+    $furniture_description = mysqli_real_escape_string($mysqli, $_POST['furniture_description']);
+    $furniture_status = mysqli_real_escape_string($mysqli, $_POST['furniture_status']);
+    $furniture_price = mysqli_real_escape_string($mysqli, $_POST['furniture_price']);
 
- /* Delete Furniture */
+    /* Persit */
+    $update_sql = "UPDATE furniture SET furniture_name = '{$furniture_name}',  furniture_description = '{$furniture_description}', furniture_status = '{$furniture_status}',
+    furniture_price = '{$furniture_price}' WHERE furniture_id = '{$furniture_id}'";
 
- /* Upload Furniture Images */
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Furniture updated";
+    } else {
+        $err  = "Failed, please try again";
+    }
+}
+
+/* Delete Furniture */
+if (isset($_POST['Delete_Furniture'])) {
+    $furniture_id = mysqli_real_escape_string($mysqli, $_POST['furniture_id']);
+
+    /* Delete */
+    $delete_sql = "DELETE FROM furniture WHERE furniture_id = '{$furniture_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Furniture Deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
