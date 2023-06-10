@@ -40,7 +40,7 @@
     $(document).ready(function() {
 
         // Default Datatable
-        $('.table').DataTable();
+        $('.table_dt').DataTable();
 
         //Buttons examples
         var table = $('#datatable-buttons').DataTable({
