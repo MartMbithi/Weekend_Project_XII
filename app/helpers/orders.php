@@ -43,7 +43,9 @@ if (isset($_POST['Pay_Order'])) {
     /* Persist */
     $add_sql = "INSERT INTO payment(payment_order_id, payment_means, payment_amount, payment_date, payment_ref_code)
     VALUES('{$order_id}', '{$payment_means}', '{$payment_amount}', '{$payment_date}', '{$payment_ref_code}')";
-    $update_sql  = "UPDATE order SET order_status = 'Paid' WHERE order_id = '{$order_id}'";
+
+    $update_sql = "UPDATE orders SET order_status = 'Paid'
+    WHERE order_id = '{$order_id}'";
 
     if (mysqli_query($mysqli, $add_sql) && mysqli_query($mysqli, $update_sql)) {
         $success  = "Order paid";

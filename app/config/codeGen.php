@@ -77,7 +77,6 @@ $code = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 10);
 /* System Password */
 $pass = substr(str_shuffle("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 8);
 
-
 /* OTP */
 $otp = substr(str_shuffle("1234567890"), 1, 3);
 
