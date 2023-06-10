@@ -112,9 +112,79 @@ if (isset($_POST['Delete_Category'])) {
 }
 
 
- /* ********************************************************* */
+/* ********************************************************* */
 
- /* Add Furniture */
+/* Add Furniture */
+if (isset($_POST['Add_Furniture'])) {
+    $furniture_seller_id = mysqli_real_escape_string($mysqli, $_POST['furniture_seller_id']);
+    $furniture_category_id = mysqli_real_escape_string($mysqli, $_POST['furniture_category_id']);
+    $furniture_sku_code = mysqli_real_escape_string($mysqli, $sku);
+    $furniture_name = mysqli_real_escape_string($mysqli, $_POST['furniture_name']);
+    $furniture_description = mysqli_real_escape_string($mysqli, $_POST['furniture_description']);
+    $furniture_status = mysqli_real_escape_string($mysqli, 'Available');
+    $furniture_price = mysqli_real_escape_string($mysqli, $_POST['furniture_price']);
+
+    /* Persist  */
+    $add_sql = "INSERT INTO furniture (furniture_seller_id, furniture_category_id, furniture_sku_code, furniture_name, furniture_description, furniture_status, furniture_price)
+    VALUES('{$furniture_seller_id}', '{$furniture_category_id}', '{$furniture_sku_code}', '{$furniture_name}', '{$furniture_description}', '{$furniture_status}', '{$furniture_price}')";
+
+    if (mysqli_query($mysqli, $add_sql)) {
+        /* Insert Images */
+        $furniture_image_furniture_id = mysqli_real_escape_string($mysqli, mysqli_insert_id($mysqli));
+
+        /* Process Images */
+        $taget_directory = "../storage/";
+        $allow_types = array('jpg', 'png', 'jpeg', 'gif');
+
+        $info = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = '';
+
+        $furniture_image = array_filter($_FILES['files']['furniture_image']);
+        if (!empty($furniture_image)) {
+            foreach ($_FILES['files']['furniture_image'] as $key => $val) {
+                // File upload path
+                $single_furniture_images = basename($_FILES['furniture_image']['name'][$key]);
+                $target_file_path = $taget_directory . $single_furniture_images;
+
+                // Check whether file type is valid
+                $file_type = pathinfo($target_file_path, PATHINFO_EXTENSION);
+                if (in_array($file_type, $allow_types)) {
+                    // Upload file to server
+                    if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $target_file_path)) {
+                        // Image db insert sql
+                        $insertValuesSQL .= "('{$furniture_image_furniture_id}', '" . $single_furniture_images . "'),";
+                    } else {
+                        $errorUpload .= $_FILES['files']['furniture_image'][$key] . ' | ';
+                    }
+                } else {
+                    $errorUploadType .= $_FILES['files']['furniture_image'][$key] . ' | ';
+                }
+            }
+
+            // Error message
+            $errorUpload = !empty($errorUpload) ? 'Upload Error: ' . trim($errorUpload, ' | ') : '';
+            $errorUploadType = !empty($errorUploadType) ? 'File Type Error: ' . trim($errorUploadType, ' | ') : '';
+            $errorMsg = !empty($errorUpload) ? '<br/>' . $errorUpload . '<br/>' . $errorUploadType : '<br/>' . $errorUploadType;
+
+            /* Process Upload */
+            if (!empty($insertValuesSQL)) {
+                $insertValuesSQL = trim($insertValuesSQL, ',');
+                // Insert image file name into database 
+                $add_images_sql = "INSERT INTO furniture_images (furniture_image_furniture_id, furniture_image) VALUES $insertValuesSQL";
+                if (mysqli_query($mysqli, $add_images_sql)) {
+                    $success = "Furniture added";
+                } else {
+                    $err = "Failed, there was an error uploading your file.";
+                }
+            } else {
+                $info = "Upload failed! " . $errorMsg;
+            }
+        } else {
+            $err = "Failed, please select images";
+        }
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
  /* Update Furniture */
 
