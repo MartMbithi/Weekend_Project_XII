@@ -85,7 +85,7 @@ require_once('../app/partials/backoffice_head.php');
             <div class="row">
                 <div class="col-lg-12 col-xl-12">
                     <div class="card-box">
-                        <table class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table class="table table_dt table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -104,7 +104,7 @@ require_once('../app/partials/backoffice_head.php');
                                     "SELECT * FROM administrator a
                                     INNER JOIN login l ON l.login_id = a.admin_login_id"
                                 );
-                                $cnt = $cnt + 1;
+                                $cnt = 1;
                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
                                     while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                 ?>
