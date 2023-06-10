@@ -65,18 +65,15 @@ require_once('../app/partials/backoffice_head.php');
                                             </td>
                                         </tr>
                                 <?php
-                                        include('../app/modals/orders.php');
+                                        include('../app/modals/payments.php');
                                     }
                                 } ?>
                             </tbody>
                         </table>
                     </div>
                 </div><!-- end col-->
-
             </div>
-
         </div>
-
     </div> <!-- container -->
 
     <!-- Footer -->

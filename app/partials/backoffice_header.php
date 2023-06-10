@@ -36,7 +36,7 @@
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
                             <!-- item-->
                             <div class="dropdown-item noti-title">
-                                <h5 class="text-overflow"><small>Welcome !<?php echo $rows['admin_first_name'] . ' ' . $rows['admin_last_name']; ?></small> </h5>
+                                <h5 class="text-overflow"><small>Welcome !</small> </h5>
                             </div>
 
                             <!-- item-->
