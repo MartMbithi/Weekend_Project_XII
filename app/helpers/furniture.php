@@ -218,3 +218,26 @@ if (isset($_POST['Delete_Furniture'])) {
         $err = "Failed, please try again";
     }
 }
+
+
+/* ****************************************************** */
+/* Add Order */
+if (isset($_POST['Add_Order'])) {
+    $order_customer_id = mysqli_real_escape_string($mysqli, $_POST['order_customer_id']);
+    $order_furniture_id  = mysqli_real_escape_string($mysqli, $_POST['order_furniture_id']);
+    $order_ref_code = mysqli_real_escape_string($mysqli, $refs);
+    $order_qty = mysqli_real_escape_string($mysqli, $_POST['order_qty']);
+    $order_amount =  mysqli_real_escape_string($mysqli, ($_POST['furniture_price'] * $order_qty));
+    $order_date = mysqli_real_escape_string($mysqli, date('d M Y'));
+    $order_estimated_delivery_date = mysqli_real_escape_string($mysqli, date('d M Y', strtotime($_POST['order_estimated_delivery_date'])));
+
+    /* Persist */
+    $add_sql = "INSERT INTO orders(order_customer_id, order_furniture_id, order_ref_code, order_qty, order_amount, order_date, order_estimated_delivery_date)
+    VALUES('{$order_customer_id}', '{$order_furniture_id}', '{$order_ref_code}', '{$order_qty}', '{$order_amount}', '{$order_date}', '{$order_estimated_delivery_date}')";
+
+    if (mysqli_query($mysqli, $add_sql)) {
+        $success = "Order added";
+    } else {
+        $err = "Failed, please try again";
+    }
+}

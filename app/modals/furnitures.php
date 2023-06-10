@@ -43,6 +43,58 @@
 </div>
 <!-- End View -->
 
+<!-- Order -->
+<div class="modal fade fixed-right" id="order_<?php echo $rows['furniture_id']; ?>" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center">
+                <div class="text-center">
+                    <h6 class="mb-0 text-bold">Order this item</h6>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">Customer name</label>
+                            <input type="hidden" required name="furniture_price" value="<?php echo $rows['furniture_price']; ?>" class="form-control">
+                            <input type="hidden" required name="order_furniture_id" value="<?php echo $rows['furniture_id']; ?>" class="form-control">
+                            <select type="text" required name="order_customer_id" class="form-control">
+                                <option>Select customer</option>
+                                <?php
+                                $fetch_customer_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM customer"
+                                );
+                                if (mysqli_num_rows($fetch_customer_sql) > 0) {
+                                    while ($customers = mysqli_fetch_array($fetch_customer_sql)) {
+                                ?>
+                                        <option value="<?php echo $customers['customer_id']; ?>"><?php echo $customers['customer_first_name'] . ' ' . $customers['customer_last_name']; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="">Items quantity</label>
+                            <input type="number" required name="order_qty" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="">Delivery date</label>
+                            <input type="date" required name="order_estimated_delivery_date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" name="Add_Order" class="btn btn-outline-danger">Add Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Order -->
 
 <!-- Edit -->
 <div class="modal fade fixed-right" id="update_<?php echo $rows['furniture_id']; ?>" role="dialog" aria-hidden="true">
