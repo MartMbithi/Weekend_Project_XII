@@ -124,11 +124,11 @@
                             <label for="">Item status</label>
                             <select type="text" required name="furniture_status" class="form-control">
                                 <?php if ($rows['furniture_status'] == 'Available') { ?>
-                                    <option>Availabile</option>
+                                    <option>Available</option>
                                     <option>Out of stock</option>
                                 <?php } else { ?>
                                     <option>Out of stock</option>
-                                    <option>Availabile</option>
+                                    <option>Available</option>
                                 <?php } ?>
                             </select>
                         </div>

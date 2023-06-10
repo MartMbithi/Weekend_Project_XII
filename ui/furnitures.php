@@ -150,7 +150,9 @@ require_once('../app/partials/backoffice_head.php');
                                             <td><?php echo $rows['furniture_status']; ?></td>
                                             <td>
                                                 <a data-toggle="modal" href="#view_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-success"><em class="fa fa-eye"></em> View</a>
-                                                <a data-toggle="modal" href="#order_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-primary"><em class="fa fa-shopping-cart"></em> Order</a>
+                                                <?php if ($rows['furniture_status'] == 'Available') { ?>
+                                                    <a data-toggle="modal" href="#order_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-primary"><em class="fa fa-shopping-cart"></em> Order</a>
+                                                <?php } ?>
                                                 <a data-toggle="modal" href="#update_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-warning"><em class="fa fa-edit"></em> Edit</a>
                                                 <a data-toggle="modal" href="#delete_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
                                             </td>
