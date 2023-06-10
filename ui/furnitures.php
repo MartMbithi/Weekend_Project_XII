@@ -93,7 +93,7 @@ require_once('../app/partials/backoffice_head.php');
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="">Furniture Images (Select Multiple)</label>
-                                        <input type="file" required name="furniture_image[]" class="form-control" multiple> 
+                                        <input type="file" required name="furniture_image[]" class="form-control" multiple>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="">Details</label>
@@ -101,7 +101,7 @@ require_once('../app/partials/backoffice_head.php');
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <button type="submit" name="Add_Customer" class="btn btn-outline-danger">Save</button>
+                                    <button type="submit" name="Add_Furniture" class="btn btn-outline-danger">Save</button>
                                 </div>
                             </form>
                         </div>
@@ -132,7 +132,7 @@ require_once('../app/partials/backoffice_head.php');
                                     "SELECT * FROM customer c
                                     INNER JOIN login l ON l.login_id = c.customer_login_id"
                                 );
-                                $cnt = $cnt + 1;
+                                $cnt = 1;
                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
                                     while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                 ?>

@@ -136,27 +136,27 @@ if (isset($_POST['Add_Furniture'])) {
         $taget_directory = "../storage/";
         $allow_types = array('jpg', 'png', 'jpeg', 'gif');
 
-        $info = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = '';
+        //$info = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = '';
 
-        $furniture_image = array_filter($_FILES['files']['furniture_image']);
+        $furniture_image = array_filter($_FILES['furniture_image']['name']);
         if (!empty($furniture_image)) {
-            foreach ($_FILES['files']['furniture_image'] as $key => $val) {
+            foreach ($_FILES['furniture_image']['name'] as $key => $val) {
                 // File upload path
-                $single_furniture_images = basename($_FILES['furniture_image']['name'][$key]);
+                $single_furniture_images = $sku . ' ' . basename($_FILES['furniture_image']['name'][$key]);
                 $target_file_path = $taget_directory . $single_furniture_images;
 
                 // Check whether file type is valid
                 $file_type = pathinfo($target_file_path, PATHINFO_EXTENSION);
                 if (in_array($file_type, $allow_types)) {
                     // Upload file to server
-                    if (move_uploaded_file($_FILES["files"]["tmp_name"][$key], $target_file_path)) {
+                    if (move_uploaded_file($_FILES["furniture_image"]["tmp_name"][$key], $target_file_path)) {
                         // Image db insert sql
                         $insertValuesSQL .= "('{$furniture_image_furniture_id}', '" . $single_furniture_images . "'),";
                     } else {
-                        $errorUpload .= $_FILES['files']['furniture_image'][$key] . ' | ';
+                        $errorUpload .= $_FILES['furniture_image']['name'][$key] . ' | ';
                     }
                 } else {
-                    $errorUploadType .= $_FILES['files']['furniture_image'][$key] . ' | ';
+                    $errorUploadType .= $_FILES['furniture_image']['name'][$key] . ' | ';
                 }
             }
 
