@@ -107,7 +107,8 @@ require_once('../app/partials/backoffice_head.php');
                                     <th>QTY</th>
                                     <th>Customer</th>
                                     <th>Cost</th>
-                                    <th>Status</th>
+                                    <th>Payment Status</th>
+                                    <th>Delivery Status</th>
                                 </tr>
                             </thead>
 
@@ -126,8 +127,9 @@ require_once('../app/partials/backoffice_head.php');
                                             <td><?php echo $rows['order_ref_code']; ?></td>
                                             <td><?php echo $rows['furniture_name']; ?></td>
                                             <td><?php echo $rows['order_qty']; ?></td>
-                                            <td><?php echo $rows['customer_names']; ?></td>
+                                            <td><?php echo $rows['customer_first_name'] . ' ' . $rows['customer_last_name']; ?></td>
                                             <td>Kes <?php echo number_format($rows['order_amount']); ?></td>
+                                            <td><?php echo $rows['order_status']; ?></td>
                                             <td><?php echo $rows['order_delivery_status']; ?></td>
                                         </tr>
                                 <?php }
