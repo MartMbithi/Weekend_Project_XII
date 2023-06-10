@@ -116,21 +116,23 @@ require_once('../app/partials/backoffice_head.php');
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Names</th>
-                                    <th>Email</th>
-                                    <th>Phone Number</th>
-                                    <th>Address</th>
+                                    <th>SKU</th>
+                                    <th>Category</th>
+                                    <th>Item Name</th>
+                                    <th>Seller</th>
+                                    <th>Unit price</th>
+                                    <th>Availability</th>
                                     <th>Manage</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 <?php
-                                /* Pull Customer Details */
                                 $fetch_records_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM customer c
-                                    INNER JOIN login l ON l.login_id = c.customer_login_id"
+                                    "SELECT * FROM furniture f
+                                    INNER JOIN furniture_category fc ON fc.category_id = f.furniture_category_id
+                                    INNER JOIN furniture_seller fs ON fs.seller_id = f.furniture_seller_id
+                                    "
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
@@ -138,18 +140,23 @@ require_once('../app/partials/backoffice_head.php');
                                 ?>
                                         <tr>
                                             <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $rows['customer_first_name'] . ' ' . $rows['customer_last_name']; ?></td>
-                                            <td><?php echo $rows['customer_email']; ?></td>
-                                            <td><?php echo $rows['customer_phone_number']; ?></td>
-                                            <td><?php echo $rows['customer_address']; ?></td>
+                                            <td><?php echo $rows['furniture_sku_code']; ?></td>
+                                            <td><?php echo $rows['category_name']; ?></td>
+                                            <td><?php echo $rows['furniture_name']; ?></td>
                                             <td>
-                                                <a data-toggle="modal" href="#update_<?php echo $rows['customer_id']; ?>" class="badge badge-pill badge-warning"><em class="fa fa-edit"></em> Edit</a>
-                                                <a data-toggle="modal" href="#delete_<?php echo $rows['customer_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
+                                                <?php echo $rows['seller_first_name'] . ' ' . $rows['seller_last_name']; ?>
+                                            </td>
+                                            <td>Kes <?php echo number_format($rows['furniture_price']); ?></td>
+                                            <td><?php echo $rows['furniture_status']; ?></td>
+                                            <td>
+                                                <a data-toggle="modal" href="#view_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-success"><em class="fa fa-eye"></em> View</a>
+                                                <a data-toggle="modal" href="#update_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-warning"><em class="fa fa-edit"></em> Edit</a>
+                                                <a data-toggle="modal" href="#delete_<?php echo $rows['furniture_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
                                             </td>
                                         </tr>
                                 <?php
                                         $cnt = $cnt + 1;
-                                        include('../app/modals/customers.php');
+                                        include('../app/modals/furnitures.php');
                                     }
                                 } ?>
                             </tbody>
