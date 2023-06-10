@@ -86,3 +86,6 @@ $sys_gen_unique_id = 'SFT-' . date('Y') . '-' . $otp . '-' . $code;
 
 /* Refs */
 $refs = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);
+
+/* SKU Code */
+$sku = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);

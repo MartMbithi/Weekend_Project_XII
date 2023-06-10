@@ -2,7 +2,8 @@
 session_start();
 require_once('../app/config/config.php');
 require_once('../app/config/checklogin.php');
-require_once('../app/helpers/users.php');
+require_once('../app/config/codeGen.php');
+require_once('../app/helpers/furniture.php');
 require_once('../app/partials/backoffice_head.php');
 ?>
 
@@ -25,11 +26,11 @@ require_once('../app/partials/backoffice_head.php');
                 <div class="col-sm-12">
                     <div class="page-title-box">
                         <div class="btn-group float-right m-t-15">
-                            <button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-custom waves-effect waves-light" aria-expanded="false">Add Customer
+                            <button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-custom waves-effect waves-light" aria-expanded="false">Add Furniture
                                 <span class="m-l-5"><i class="fa fa-plus"></i></span>
                             </button>
                         </div>
-                        <h4 class="page-title">Customers</h4>
+                        <h4 class="page-title">Furnitures</h4>
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@ require_once('../app/partials/backoffice_head.php');
                     <div class="modal-content">
                         <div class="modal-header align-items-center">
                             <div class="text-center">
-                                <h6 class="mb-0 text-bold">Register new customer</h6>
+                                <h6 class="mb-0 text-bold">Register new furniture item</h6>
                             </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -49,32 +50,54 @@ require_once('../app/partials/backoffice_head.php');
                             <form class="needs-validation" method="post" enctype="multipart/form-data" role="form">
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="">First Name</label>
-                                        <input type="text" required name="customer_first_name" class="form-control">
+                                        <label for="">Seller name</label>
+                                        <select type="text" required name="furniture_seller_id" class="form-control">
+                                            <option>Select seller</option>
+                                            <?php
+                                            $fetch_records_sql = mysqli_query(
+                                                $mysqli,
+                                                "SELECT * FROM furniture_seller"
+                                            );
+                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                            ?>
+                                                    <option value="<?php echo $rows['seller_id']; ?>"><?php echo $rows['seller_first_name'] . ' ' . $rows['seller_last_name']; ?></option>
+                                            <?php }
+                                            } ?>
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="">Last Name</label>
-                                        <input type="text" required name="customer_last_name" class="form-control">
+                                        <label for="">Category</label>
+                                        <select type="text" required name="furniture_category_id" class="form-control">
+                                            <option>Select category</option>
+                                            <?php
+                                            $fetch_records_sql = mysqli_query(
+                                                $mysqli,
+                                                "SELECT * FROM furniture_category"
+                                            );
+                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                            ?>
+                                                    <option value="<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></option>
+                                            <?php }
+                                            } ?>
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="">Contacts</label>
-                                        <input type="text" required name="customer_phone_number" class="form-control">
+                                        <label for="">Furniture Name</label>
+                                        <input type="text" required name="furniture_name" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="">Email</label>
-                                        <input type="email" required name="customer_email" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="">Login Password</label>
-                                        <input type="password" required name="new_password" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="">Confirm Password</label>
-                                        <input type="password" required name="confirm_password" class="form-control">
+                                        <label for="">Unit Price</label>
+                                        <input type="text" required name="furniture_price" class="form-control">
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="">Address</label>
-                                        <input type="text" required name="customer_address" class="form-control">
+                                        <label for="">Furniture Images (Select Multiple)</label>
+                                        <input type="file" required name="furniture_image[]" class="form-control" multiple> 
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="">Details</label>
+                                        <textarea type="text" rows="5" required name="furniture_description" class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <div class="text-right">
