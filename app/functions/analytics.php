@@ -247,11 +247,66 @@ if ($login_rank == 'Admin') {
     );
     if (mysqli_num_rows($fetch_records_sql) > 0) {
         while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
+            $customer_id = mysqli_real_escape_string($mysqli, $customer['customer_id']);
+
             /* My Unpaid Orders */
+            $query = "SELECT COUNT(*) FROM orders
+            WHERE  order_customer_id = '{$customer_id}' AND order_status = 'Pending'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($unpaid);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* Paid Orders */
+            $query = "SELECT COUNT(*) FROM orders
+            WHERE  order_customer_id = '{$customer_id}' AND order_status = 'Paid'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($paid);
+            $stmt->fetch();
+            $stmt->close();
+
+
             /* Total Orders */
+            $query = "SELECT COUNT(*) FROM orders
+            WHERE  order_customer_id = '{$customer_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($total_orders);
+            $stmt->fetch();
+            $stmt->close();
+
+
             /* On Transit Orders */
+            $query = "SELECT COUNT(*) FROM orders
+            WHERE  order_customer_id = '{$customer_id}' AND order_delivery_status = 'On Transit'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($on_transit_orders);
+            $stmt->fetch();
+            $stmt->close();
+
+
             /* Delivered Orders */
+            $query = "SELECT COUNT(*) FROM orders
+            WHERE  order_customer_id = '{$customer_id}' AND order_delivery_status = 'Delivered'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($on_transit_orders);
+            $stmt->fetch();
+            $stmt->close();
+
+
             /* Expenditure */
+            $query = "SELECT SUM(payment_amount) FROM payment p
+            INNER JOIN orders o ON o.order_id = p.payment_order_id
+            WHERE o.order_customer_id = '{$customer_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($expenditure);
+            $stmt->fetch();
+            $stmt->close();
         }
     }
 }
