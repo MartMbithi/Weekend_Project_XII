@@ -184,6 +184,26 @@ if ($login_rank == 'Admin') {
             $stmt->fetch();
             $stmt->close();
 
+            /* Unpaid Orders */
+            $query = "SELECT COUNT(*) FROM orders o
+            INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id 
+            WHERE o.order_status = 'Pending'  AND f.furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($unpaid);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* Paid Orders */
+            $query = "SELECT COUNT(*) FROM orders o
+            INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id 
+            WHERE o.order_status = 'Paid'  AND f.furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($paid);
+            $stmt->fetch();
+            $stmt->close();
+
             /* On Transit Orders */
             $query = "SELECT COUNT(*) FROM orders o
             INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id 
@@ -218,6 +238,7 @@ if ($login_rank == 'Admin') {
         }
     }
 } else {
+    /* Pull Customer Analytics */
     $fetch_customer_sql = mysqli_query(
         $mysqli,
         "SELECT * FROM customer c
@@ -226,7 +247,11 @@ if ($login_rank == 'Admin') {
     );
     if (mysqli_num_rows($fetch_records_sql) > 0) {
         while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
-            /* Pull Seller Analytics */
+            /* My Unpaid Orders */
+            /* Total Orders */
+            /* On Transit Orders */
+            /* Delivered Orders */
+            /* Expenditure */
         }
     }
 }
