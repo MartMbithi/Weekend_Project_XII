@@ -31,8 +31,7 @@ require_once('../app/partials/backoffice_head.php');
             <div class="row">
                 <div class="col-lg-12 col-xl-12">
                     <div class="card-box">
-                        <?php
-                        if ($_SESSION['login_rank'] == 'Admin') { ?>
+                        <?php if ($_SESSION['login_rank'] == 'Admin') { ?>
                             <table class="table table_dt table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
