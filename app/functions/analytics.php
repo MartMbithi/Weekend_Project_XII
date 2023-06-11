@@ -65,68 +65,100 @@
  *
  */
 
-/* Customers */
-$query = "SELECT COUNT(*) FROM customer";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($customers);
-$stmt->fetch();
-$stmt->close();
-
-/* Staffs */
-$query = "SELECT COUNT(*) FROM administrator";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($staffs);
-$stmt->fetch();
-$stmt->close();
-
-/* Sellers */
-$query = "SELECT COUNT(*) FROM furniture_seller";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($sellers);
-$stmt->fetch();
-$stmt->close();
-
-/* Furnitures */
-$query = "SELECT COUNT(*) FROM furniture";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($furniture);
-$stmt->fetch();
-$stmt->close();
+$login_rank = mysqli_real_escape_string($mysqli, $_SESSION['login_rank']);
 
 
-/* Total Orders */
-$query = "SELECT COUNT(*) FROM orders";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($total_orders);
-$stmt->fetch();
-$stmt->close();
+if ($login_rank == 'Admin') {
+    /* Pull Admin Analytics */
 
-/* On Transit Orders */
-$query = "SELECT COUNT(*) FROM orders WHERE order_delivery_status = 'On Transit'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($on_transit_orders);
-$stmt->fetch();
-$stmt->close();
+    /* Customers */
+    $query = "SELECT COUNT(*) FROM customer";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($customers);
+    $stmt->fetch();
+    $stmt->close();
 
-/* Delivered Orders */
-$query = "SELECT COUNT(*) FROM orders WHERE order_delivery_status = 'Delivered'";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($delivered_orders);
-$stmt->fetch();
-$stmt->close();
+    /* Staffs */
+    $query = "SELECT COUNT(*) FROM administrator";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($staffs);
+    $stmt->fetch();
+    $stmt->close();
+
+    /* Sellers */
+    $query = "SELECT COUNT(*) FROM furniture_seller";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($sellers);
+    $stmt->fetch();
+    $stmt->close();
+
+    /* Furnitures */
+    $query = "SELECT COUNT(*) FROM furniture";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($furniture);
+    $stmt->fetch();
+    $stmt->close();
 
 
-/* Revenue */
-$query = "SELECT SUM(payment_amount) FROM payment";
-$stmt = $mysqli->prepare($query);
-$stmt->execute();
-$stmt->bind_result($revenue);
-$stmt->fetch();
-$stmt->close();
+    /* Total Orders */
+    $query = "SELECT COUNT(*) FROM orders";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($total_orders);
+    $stmt->fetch();
+    $stmt->close();
+
+    /* On Transit Orders */
+    $query = "SELECT COUNT(*) FROM orders WHERE order_delivery_status = 'On Transit'";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($on_transit_orders);
+    $stmt->fetch();
+    $stmt->close();
+
+    /* Delivered Orders */
+    $query = "SELECT COUNT(*) FROM orders WHERE order_delivery_status = 'Delivered'";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($delivered_orders);
+    $stmt->fetch();
+    $stmt->close();
+
+
+    /* Revenue */
+    $query = "SELECT SUM(payment_amount) FROM payment";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($revenue);
+    $stmt->fetch();
+    $stmt->close();
+
+
+} else if ($login_rank == 'Seller') {
+    $fetch_seller_sql = mysqli_query(
+        $mysqli,
+        "SELECT * FROM furniture_seller fs
+        INNER JOIN login l ON l.login_id = fs.seller_login_id
+        WHERE l.login_id = '{$_SESSION['login_id']}'"
+    );
+    if (mysqli_num_rows($fetch_seller_sql) > 0) {
+        while ($seller = mysqli_fetch_array($fetch_seller_sql)) {
+            /* Pull Seller Analytics */
+        }
+    }
+} else {
+    $fetch_customer_sql = mysqli_query(
+        $mysqli,
+        "SELECT * FROM customer c
+        INNER JOIN login l ON l.login_id = c.customer_login_id"
+    );
+    if (mysqli_num_rows($fetch_records_sql) > 0) {
+        while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
+            /* Pull Seller Analytics */
+        }
+    }
+}

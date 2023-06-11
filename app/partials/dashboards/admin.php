@@ -87,7 +87,7 @@
                     $fetch_records_sql = mysqli_query(
                         $mysqli,
                         "SELECT * FROM orders o INNER JOIN customer c ON c.customer_id = o.order_customer_id
-                                    INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id"
+                        INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id"
                     );
                     if (mysqli_num_rows($fetch_records_sql) > 0) {
                         while ($rows = mysqli_fetch_array($fetch_records_sql)) {
