@@ -86,13 +86,14 @@ require_once('../app/partials/landing_head.php');
                 <div class="col-12">
                     <div class="row ec_breadcrumb_inner">
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ec-breadcrumb-title">Custom Furnitures</h2>
+                            <h2 class="ec-breadcrumb-title">Custom Furnitures Under <?php echo $_GET['name']; ?> Category</h2>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <!-- ec-breadcrumb-list start -->
                             <ul class="ec-breadcrumb-list">
                                 <li class="ec-breadcrumb-item"><a href="../">Home</a></li>
-                                <li class="ec-breadcrumb-item active">Furnitures</li>
+                                <li class="ec-breadcrumb-item"><a href="../">Categories</a></li>
+                                <li class="ec-breadcrumb-item active"><?php echo $_GET['name']; ?></li>
                             </ul>
                             <!-- ec-breadcrumb-list end -->
                         </div>
@@ -122,6 +123,7 @@ require_once('../app/partials/landing_head.php');
                     "SELECT * FROM furniture f
                 INNER JOIN furniture_category fc ON fc.category_id = f.furniture_category_id
                 INNER JOIN furniture_seller fs ON fs.seller_id = f.furniture_seller_id
+                WHERE fc.category_id = '{$_GET['cat']}'
                 "
                 );
                 if (mysqli_num_rows($fetch_records_sql) > 0) {

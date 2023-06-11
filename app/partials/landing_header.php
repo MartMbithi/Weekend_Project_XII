@@ -273,13 +273,12 @@
                                         if (mysqli_num_rows($fetch_records_sql) > 0) {
                                             while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                         ?>
-                                                <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                                <li><a href="landing_categories?cat=<?php echo $rows['category_id']; ?>&name=<?php echo $rows['category_name']; ?>"><?php echo $rows['category_name']; ?></a></li>
                                         <?php }
                                         } ?>
                                     </ul>
                                 </li>
                                 <li><a href="landing_furnitures">Furnitures</a></li>
-                                <li><a href="my_cart">Shopping Cart</a></li>
                                 <li><a href="my_cart">Orders</a></li>
                                 <li><a href="my_payments">Payments</a></li>
                                 <li><a href="my_profile">Profile</a></li>
@@ -299,7 +298,7 @@
                                         if (mysqli_num_rows($fetch_records_sql) > 0) {
                                             while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                         ?>
-                                                <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                                <li><a href="landing_categories?cat=<?php echo $rows['category_id']; ?>&name=<?php echo $rows['category_name']; ?>"><?php echo $rows['category_name']; ?></a></li>
                                         <?php }
                                         } ?>
                                     </ul>
@@ -337,13 +336,12 @@
                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
                                     while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                 ?>
-                                        <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                        <li><a href="landing_categories?cat=<?php echo $rows['category_id']; ?>&name=<?php echo $rows['category_name']; ?>"><?php echo $rows['category_name']; ?></a></li>
                                 <?php }
                                 } ?>
                             </ul>
                         </li>
                         <li><a href="landing_furnitures">Furnitures</a></li>
-                        <li><a href="">Shopping Cart</a></li>
                         <li><a href="my_cart">Orders</a></li>
                         <li><a href="my_payments">Payments</a></li>
                         <li><a href="my_profile">Profile</a></li>
@@ -363,7 +361,7 @@
                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
                                     while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                 ?>
-                                        <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                        <li><a href="landing_categories?cat=<?php echo $rows['category_id']; ?>&name=<?php echo $rows['category_name']; ?>"><?php echo $rows['category_name']; ?></a></li>
                                 <?php }
                                 } ?>
                             </ul>
