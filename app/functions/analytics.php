@@ -136,25 +136,93 @@ if ($login_rank == 'Admin') {
     $stmt->bind_result($revenue);
     $stmt->fetch();
     $stmt->close();
-
-
 } else if ($login_rank == 'Seller') {
+    /* Pull Seller Analytics */
     $fetch_seller_sql = mysqli_query(
         $mysqli,
         "SELECT * FROM furniture_seller fs
         INNER JOIN login l ON l.login_id = fs.seller_login_id
-        WHERE l.login_id = '{$_SESSION['login_id']}'"
+        WHERE l.login_id = '{$_SESSION['login_id']}' AND l.login_rank = 'Seller'"
     );
     if (mysqli_num_rows($fetch_seller_sql) > 0) {
         while ($seller = mysqli_fetch_array($fetch_seller_sql)) {
-            /* Pull Seller Analytics */
+            $seller_id = mysqli_real_escape_string($mysqli, $seller['seller_id']);
+
+            /* Furnitures */
+            $query = "SELECT COUNT(*) FROM furniture WHERE furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($furniture);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* Available Furnitures */
+            $query = "SELECT COUNT(*) FROM furniture 
+            WHERE furniture_seller_id = '{$seller_id}' AND furniture_status ='Available'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($available_furniture);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* Out Of Stock Furnitures */
+            $query = "SELECT COUNT(*) FROM furniture 
+            WHERE furniture_seller_id = '{$seller_id}' AND furniture_status = 'Out of stock'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($out_of_stock);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* Total Orders */
+            $query = "SELECT COUNT(*) FROM orders o
+            INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id
+            WHERE f.furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($total_orders);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* On Transit Orders */
+            $query = "SELECT COUNT(*) FROM orders o
+            INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id 
+            WHERE o.order_delivery_status = 'On Transit'  AND f.furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($on_transit_orders);
+            $stmt->fetch();
+            $stmt->close();
+
+            /* Delivered Orders */
+            $query = "SELECT COUNT(*) FROM orders o
+            INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id
+            WHERE o.order_delivery_status = 'Delivered' AND f.furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($delivered_orders);
+            $stmt->fetch();
+            $stmt->close();
+
+
+            /* Revenue */
+            $query = "SELECT SUM(payment_amount) FROM payment p
+            INNER JOIN orders o ON o.order_id = p.payment_order_id
+            INNER JOIN furniture f ON f.furniture_id = o.order_furniture_id
+            WHERE f.furniture_seller_id = '{$seller_id}'";
+            $stmt = $mysqli->prepare($query);
+            $stmt->execute();
+            $stmt->bind_result($revenue);
+            $stmt->fetch();
+            $stmt->close();
         }
     }
 } else {
     $fetch_customer_sql = mysqli_query(
         $mysqli,
         "SELECT * FROM customer c
-        INNER JOIN login l ON l.login_id = c.customer_login_id"
+        INNER JOIN login l ON l.login_id = c.customer_login_id
+        WHERE l.login_id = '{$_SESSION['login_id']}' AND  l.login_rank = 'Customer'"
     );
     if (mysqli_num_rows($fetch_records_sql) > 0) {
         while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
