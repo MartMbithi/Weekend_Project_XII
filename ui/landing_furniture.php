@@ -128,38 +128,38 @@ require_once('../app/partials/landing_head.php');
                                         <div class="single-pro-img">
                                             <div class="single-product-scroll">
                                                 <div class="single-product-cover">
-                                                    <div class="single-slide zoom-image-hover">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_1.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide zoom-image-hover">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_2.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide zoom-image-hover">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_3.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide zoom-image-hover">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_4.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide zoom-image-hover">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_3.jpg" alt="">
-                                                    </div>
+                                                    <?php
+                                                    $fetch_images_sql = mysqli_query(
+                                                        $mysqli,
+                                                        "SELECT * FROM furniture_images WHERE 
+                                                        furniture_image_furniture_id = '{$rows['furniture_id']}'
+                                                        ORDER BY RAND()"
+                                                    );
+                                                    if (mysqli_num_rows($fetch_images_sql) > 0) {
+                                                        while ($images = mysqli_fetch_array($fetch_images_sql)) {
+                                                    ?>
+                                                            <div class="single-slide zoom-image-hover">
+                                                                <img class="img-responsive" src="../storage/<?php echo $images['furniture_image']; ?>" alt="">
+                                                            </div>
+                                                    <?php }
+                                                    } ?>
                                                 </div>
                                                 <div class="single-nav-thumb">
-                                                    <div class="single-slide">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_1.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_2.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_3.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_4.jpg" alt="">
-                                                    </div>
-                                                    <div class="single-slide">
-                                                        <img class="img-responsive" src="assets/images/product-image/9_3.jpg" alt="">
-                                                    </div>
+                                                    <?php
+                                                    $fetch_images_sql = mysqli_query(
+                                                        $mysqli,
+                                                        "SELECT * FROM furniture_images WHERE 
+                                                        furniture_image_furniture_id = '{$rows['furniture_id']}'
+                                                        ORDER BY RAND()"
+                                                    );
+                                                    if (mysqli_num_rows($fetch_images_sql) > 0) {
+                                                        while ($images = mysqli_fetch_array($fetch_images_sql)) {
+                                                    ?>
+                                                            <div class="single-slide">
+                                                                <img class="img-responsive" src="../storage/<?php echo $images['furniture_image']; ?>" alt="">
+                                                            </div>
+                                                    <?php }
+                                                    } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -274,7 +274,7 @@ require_once('../app/partials/landing_head.php');
                                 </div>
                                 <div class="ec-pro-content">
                                     <h5 class="ec-pro-title">
-                                        <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>">
+                                        <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>&cat=<?php echo $rows['category_id']; ?>">
                                             <?php echo $rows['furniture_name']; ?>
                                         </a>
                                     </h5>
