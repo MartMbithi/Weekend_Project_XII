@@ -161,7 +161,7 @@
                         <!-- Ec Header Search Start -->
                         <div class="align-self-center">
                             <div class="header-search">
-                                <form class="ec-btn-group-form" action="#">
+                                <form class="ec-btn-group-form" action="landing_furnitures">
                                     <input class="form-control ec-search-bar" placeholder="Search products..." type="text">
                                     <button class="submit" type="submit">
                                         <img src="../public/landing/images/icons/search.svg" class="svg_img header_svg" alt="" />
@@ -219,7 +219,7 @@
                         <!-- Ec Header Search Start -->
                         <div class="align-self-center">
                             <div class="header-search">
-                                <form class="ec-btn-group-form" action="#">
+                                <form class="ec-btn-group-form" action="landing_furnitures">
                                     <input class="form-control ec-search-bar" placeholder="Search products..." type="text">
                                     <button class="submit" type="submit">
                                         <img src="../public/landing/images/icons/search.svg" class="svg_img header_svg" alt="" />
@@ -266,7 +266,7 @@
                 <!-- Ec Header Search Start -->
                 <div class="col">
                     <div class="header-search">
-                        <form class="ec-btn-group-form" action="#">
+                        <form class="ec-btn-group-form" action="landing_furnitures">
                             <input class="form-control ec-search-bar" placeholder="Search furniture..." type="text">
                             <button class="submit" type="submit"><img src="../public/landing/images/icons/search.svg" class="svg_img header_svg" alt="icon" /></button>
                         </form>
