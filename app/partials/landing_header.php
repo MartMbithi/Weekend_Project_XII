@@ -76,7 +76,33 @@
                                 <div class="header-icon">
                                     <img src="../public/landing/images/icons/cart.svg" class="svg_img header_svg" alt="" />
                                 </div>
-                                <span class="ec-header-count cart-count-lable">3</span>
+                                <span class="ec-header-count cart-count-lable">
+                                    <?php
+                                    /* Count unpaid orders */
+                                    $fetch_customer_sql = mysqli_query(
+                                        $mysqli,
+                                        "SELECT * FROM customer c
+                                        INNER JOIN login l ON l.login_id = c.customer_login_id
+                                        WHERE l.login_id = '{$_SESSION['login_id']}' AND  l.login_rank = 'Customer'"
+                                    );
+                                    if (mysqli_num_rows($fetch_customer_sql) > 0) {
+                                        while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
+                                            $customer_id = mysqli_real_escape_string($mysqli, $customer['customer_id']);
+
+                                            /* My Unpaid Orders */
+                                            $query = "SELECT COUNT(*) FROM orders
+                                            WHERE  order_customer_id = '{$customer_id}' AND order_status = 'Pending'";
+                                            $stmt = $mysqli->prepare($query);
+                                            $stmt->execute();
+                                            $stmt->bind_result($unpaid);
+                                            $stmt->fetch();
+                                            $stmt->close();
+                                        }
+                                    }
+                                    global $unpaid;
+                                    echo $unpaid;
+                                    ?>
+                                </span>
                             </a>
                             <!-- Header menu Start -->
                             <a href="#ec-mobile-menu" class="ec-header-btn ec-side-toggle d-lg-none">
@@ -161,7 +187,9 @@
                                 <!-- Header Cart Start -->
                                 <a href="my_cart" class="ec-header-btn ec-header-wishlist">
                                     <div class="header-icon"><img src="../public/landing/images/icons/cart.svg" class="svg_img header_svg" alt="" /></div>
-                                    <span class="ec-header-count cart-count-lable">3</span>
+                                    <span class="ec-header-count cart-count-lable">
+                                        <?php echo $unpaid; ?>
+                                    </span>
                                 </a>
                                 <!-- Header Cart End -->
                             </div>

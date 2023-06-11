@@ -245,7 +245,7 @@ if ($login_rank == 'Admin') {
         INNER JOIN login l ON l.login_id = c.customer_login_id
         WHERE l.login_id = '{$_SESSION['login_id']}' AND  l.login_rank = 'Customer'"
     );
-    if (mysqli_num_rows($fetch_records_sql) > 0) {
+    if (mysqli_num_rows($fetch_customer_sql) > 0) {
         while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
             $customer_id = mysqli_real_escape_string($mysqli, $customer['customer_id']);
 
