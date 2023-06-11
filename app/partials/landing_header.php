@@ -19,7 +19,7 @@
                 <!-- Header Top Message Start -->
                 <div class="col text-center header-top-center">
                     <div class="header-top-message text-upper">
-                        <span>Free Shipping</span>This Week Order Over - Kes 15,000
+                        <span>Free Shipping</span>This Week Order Over - Kes 20,000
                     </div>
                 </div>
                 <!-- Header Top Message End -->
@@ -263,10 +263,22 @@
                                 <li><a href="../">Home</a></li>
                                 <li class="dropdown"><a href="javascript:void(0)">Categories</a>
                                     <ul class="sub-menu">
-                                        <li><a href="categories?cat=">About Us</a></li>
+                                        <?php
+                                        /* Pull Categories */
+                                        $fetch_records_sql = mysqli_query(
+                                            $mysqli,
+                                            "SELECT * FROM furniture_category"
+                                        );
+                                        $cnt = 1;
+                                        if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                        ?>
+                                                <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                        <?php }
+                                        } ?>
                                     </ul>
                                 </li>
-                                <li><a href="furnitures">Furnitures</a></li>
+                                <li><a href="landing_furnitures">Furnitures</a></li>
                                 <li><a href="my_cart">Shopping Cart</a></li>
                                 <li><a href="my_cart">Orders</a></li>
                                 <li><a href="my_payments">Payments</a></li>
@@ -278,10 +290,21 @@
                                 <li><a href="../">Home</a></li>
                                 <li class="dropdown"><a href="javascript:void(0)">Categories</a>
                                     <ul class="sub-menu">
-                                        <li><a href="categories?cat=">About Us</a></li>
+                                        <?php
+                                        /* Pull Categories */
+                                        $fetch_records_sql = mysqli_query(
+                                            $mysqli,
+                                            "SELECT * FROM furniture_category"
+                                        );
+                                        if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                        ?>
+                                                <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                        <?php }
+                                        } ?>
                                     </ul>
                                 </li>
-                                <li><a href="furnitures">Furnitures</a></li>
+                                <li><a href="landing_furnitures">Furnitures</a></li>
                                 <li><a href="register">Register</a></li>
                                 <li><a href="login">Login</a></li>
                             </ul>
@@ -305,10 +328,21 @@
                         <li><a href="../">Home</a></li>
                         <li><a href="javascript:void(0)">Categories</a>
                             <ul class="sub-menu">
-                                <li><a href="about-us.html">About Us</a></li>
+                                <?php
+                                /* Pull Categories */
+                                $fetch_records_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM furniture_category"
+                                );
+                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                    while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                ?>
+                                        <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                <?php }
+                                } ?>
                             </ul>
                         </li>
-                        <li><a href="furnitures">Furnitures</a></li>
+                        <li><a href="landing_furnitures">Furnitures</a></li>
                         <li><a href="">Shopping Cart</a></li>
                         <li><a href="my_cart">Orders</a></li>
                         <li><a href="my_payments">Payments</a></li>
@@ -320,10 +354,21 @@
                         <li><a href="../">Home</a></li>
                         <li class="dropdown"><a href="javascript:void(0)">Categories</a>
                             <ul class="sub-menu">
-                                <li><a href="categories?cat=">About Us</a></li>
+                                <?php
+                                /* Pull Categories */
+                                $fetch_records_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM furniture_category"
+                                );
+                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                    while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                ?>
+                                        <li><a href="categories?cat=<?php echo $rows['category_id']; ?>"><?php echo $rows['category_name']; ?></a></li>
+                                <?php }
+                                } ?>
                             </ul>
                         </li>
-                        <li><a href="furnitures">Furnitures</a></li>
+                        <li><a href="landing_furnitures">Furnitures</a></li>
                         <li><a href="register">Register</a></li>
                         <li><a href="login">Login</a></li>
                     </ul>
