@@ -87,7 +87,7 @@ if (isset($_POST['Login'])) {
         } else if ($row['login_rank'] == 'Seller') {
             /* Seller Pages */
             $_SESSION['success'] = 'Logged in successfully';
-            header('Location: seller_home');
+            header('Location: dashboard');
             exit;
         } else {
             /* Admin Pages */
