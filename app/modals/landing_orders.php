@@ -49,7 +49,7 @@
                     <br>
                     <!-- Hide This -->
                     <input type="hidden" name="order_id" value="<?php echo $rows['order_id']; ?>">
-                    <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
+                    <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
                     <button type="submit" name="Delete_Order" class="text-center btn btn-danger">Yes, Delete</button>
                 </div>
             </form>
