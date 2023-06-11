@@ -28,11 +28,15 @@ require_once('../app/partials/backoffice_head.php');
                     </div>
                 </div>
             </div>
-
-            <?php require_once('../app/partials/dashboards/admin.php'); ?>
-
+            <?php
+            /* Load Dashboard Based On Logged In Access Levels */
+            if ($_SESSION['login_rank'] == 'Admin') {
+                require_once('../app/partials/dashboards/admin.php');
+            } else {
+                require_once('../app/partials/dashboards/seller.php');
+            }
+            ?>
         </div> <!-- container -->
-
         <!-- Footer -->
         <?php require_once('../app/partials/backoffice_footer.php'); ?>
         <!-- End Footer -->

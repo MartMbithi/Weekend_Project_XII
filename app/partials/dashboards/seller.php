@@ -1,71 +1,62 @@
 <div class="row">
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-bed float-right text-muted"></i>
-            <h6 class="text-muted text-uppercase m-b-20">Furnitures</h6>
+            <h6 class="text-muted text-uppercase m-b-20">Total Furnitures</h6>
             <h2 class="m-b-20"><span data-plugin="counterup"><?php echo $furniture; ?></span></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-bed float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">Available Furnitures</h6>
             <h2 class="m-b-20"><span data-plugin="counterup"><?php echo $available_furniture; ?></span></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-bed float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">Out Of Stock Furnitures</h6>
             <h2 class="m-b-20"><span data-plugin="counterup"><?php echo $out_of_stock; ?></span></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-tasks float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">Total Orders</h6>
             <h2 class="m-b-20" data-plugin="counterup"><?php echo $total_orders; ?></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-car float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">UnPaid Orders</h6>
             <h2 class="m-b-20" data-plugin="counterup"><?php echo $unpaid; ?></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-car float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">Paid Orders</h6>
             <h2 class="m-b-20" data-plugin="counterup"><?php echo $paid; ?></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-car float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">On Transit Orders</h6>
             <h2 class="m-b-20" data-plugin="counterup"><?php echo $on_transit_orders; ?></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-calendar-check-o float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">Delivered Orders</h6>
             <h2 class="m-b-20" data-plugin="counterup"><?php echo $delivered_orders; ?></h2>
         </div>
     </div>
 
-    <div class="col-md-6 col-xl-3">
+    <div class="col-md-6 col-xl-4">
         <div class="card-box tilebox-one">
-            <i class="fa fa-money float-right text-muted"></i>
             <h6 class="text-muted text-uppercase m-b-20">Revenue</h6>
             <h2 class="m-b-20" data-plugin="counterup">Kes <?php echo number_format($revenue); ?></h2>
         </div>
