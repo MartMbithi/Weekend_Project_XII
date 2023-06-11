@@ -150,17 +150,11 @@ require_once('../app/partials/landing_head.php');
                                     </div>
                                 </div>
                                 <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>"><?php echo $rows['furniture_name']; ?></a></h5>
-                                    <div class="ec-pro-rating">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                    </div>
-                                    <div class="ec-pro-list-desc">
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dutmmy text ever since the 1500s, when an unknown printer took a galley.
-                                    </div>
+                                    <h5 class="ec-pro-title">
+                                        <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>">
+                                            <?php echo $rows['furniture_name']; ?>
+                                        </a>
+                                    </h5>
                                     <span class="ec-price">
                                         <span class="old-price">Kes <?php echo  number_format($rows['furniture_price'] + '5000'); ?></span>
                                         <span class="new-price">Kes <?php echo  number_format($rows['furniture_price']); ?></span>
@@ -170,7 +164,6 @@ require_once('../app/partials/landing_head.php');
                         </div>
                 <?php }
                 } ?>
-
             </div>
         </div>
     </section>
