@@ -23,7 +23,7 @@ require_once('../app/partials/backoffice_head.php');
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Profile settings - <?php echo $_SESSION['login_id']; ?></h4>
+                        <h4 class="page-title">Profile settings</h4>
                     </div>
                 </div>
             </div>
