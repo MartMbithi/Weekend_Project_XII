@@ -2,7 +2,8 @@
 session_start();
 require_once('../app/config/config.php');
 /* require_once('../app/config/checklogin.php');
- */require_once('../app/partials/landing_head.php');
+ */
+require_once('../app/partials/landing_head.php');
 ?>
 
 <body>
@@ -23,10 +24,10 @@ require_once('../app/config/config.php');
                         <div class="row">
                             <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
                                 <div class="ec-slide-content slider-animation">
-                                    <h1 class="ec-slide-title">New Fashion Collection</h1>
+                                    <h1 class="ec-slide-title">New Home Decor Collection</h1>
                                     <h2 class="ec-slide-stitle">Sale Offer</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                                    <a href="#" class="btn btn-lg btn-secondary">Order Now</a>
+                                    <p>Upgrade your living space with our custom furniture</p>
+                                    <a href="landing_furnitures" class="btn btn-lg btn-secondary">Explore</a>
                                 </div>
                             </div>
                         </div>
@@ -37,10 +38,10 @@ require_once('../app/config/config.php');
                         <div class="row">
                             <div class="col-xl-6 col-lg-7 col-md-7 col-sm-7 align-self-center">
                                 <div class="ec-slide-content slider-animation">
-                                    <h1 class="ec-slide-title">Boat Headphone Sets</h1>
+                                    <h1 class="ec-slide-title">Custom Furniture</h1>
                                     <h2 class="ec-slide-stitle">Sale Offer</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-                                    <a href="#" class="btn btn-lg btn-secondary">Order Now</a>
+                                    <p>Normal is boring! Get your custom designed furniture delivered at your door step</p>
+                                    <a href="landing_furnitures" class="btn btn-lg btn-secondary">Order Now</a>
                                 </div>
                             </div>
                         </div>
