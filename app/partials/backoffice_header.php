@@ -235,9 +235,7 @@ if ($_SESSION['login_rank'] == 'Admin') {
 
                             </div>
                         </li>
-
                     </ul>
-
                 </div> <!-- end menu-extras -->
                 <div class="clearfix"></div>
 
