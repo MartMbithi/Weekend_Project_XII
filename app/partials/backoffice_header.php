@@ -254,13 +254,8 @@ if ($_SESSION['login_rank'] == 'Admin') {
                         <li>
                             <a href="dashboard"><i class="fa fa-home"></i> <span> Dashboard </span> </a>
                         </li>
-
-                        <li class="has-submenu">
-                            <a href="#"><i class="fa fa-bed"></i> <span> Furnitures </span> </a>
-                            <ul class="submenu">
-                                <li><a href="categories">Categories</a></li>
-                                <li><a href="furnitures">Furnitures</a></li>
-                            </ul>
+                        <li>
+                            <a href="furnitures"><i class="fa fa-bed"></i> <span> Furnitures </span> </a>
                         </li>
                         <li>
                             <a href="orders"><i class="fa fa-shopping-cart"></i> <span> Orders </span> </a>
