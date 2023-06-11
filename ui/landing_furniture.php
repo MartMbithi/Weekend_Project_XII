@@ -68,6 +68,8 @@ session_start();
 require_once('../app/config/config.php');
 /* require_once('../app/config/checklogin.php');
  */
+require_once('../app/config/codeGen.php');
+require_once('../app/helpers/furniture.php');
 require_once('../app/partials/landing_head.php');
 ?>
 
@@ -187,29 +189,37 @@ require_once('../app/partials/landing_head.php');
                                                     </div>
                                                     <?php if ($_SESSION['login_rank'] == 'Customer') {
                                                         /* Pull Customer Details */
-                                                        
+                                                        $fetch_customer_sql = mysqli_query(
+                                                            $mysqli,
+                                                            "SELECT * FROM customer c
+                                                            INNER JOIN login l ON l.login_id = c.customer_login_id
+                                                            WHERE c.customer_login_id = '{$_SESSION['login_id']}'"
+                                                        );
+                                                        if (mysqli_num_rows($fetch_customer_sql) > 0) {
+                                                            while ($customer = mysqli_fetch_array($fetch_customer_sql)) {
                                                     ?>
-
-                                                        <div class="ec-single-qty">
-                                                            <?php if ($rows['furniture_status'] == 'Available') { ?>
-                                                                <!-- Hide This -->
-                                                                <input type="hidden" name="order_customer_id" value="<?php echo $customer_id; ?>">
-                                                                <input type="hidden" name="order_ref_code" value="<?php echo $refs; ?>">
-                                                                <input type="hidden" name="order_estimated_delivery_date" value="<?php echo date('d M Y', strtotime("+7 day", $today)); ?>">
-                                                                <input type="hidden" name="order_estimated_delivery_date" value="<?php echo date('d M Y', strtotime("+7 day", $today)); ?>">
-                                                                <div class="qty-plus-minus">
-                                                                    <input class="qty-input" type="text" name="order_qty" value="1" />
+                                                                <div class="ec-single-qty">
+                                                                    <?php if ($rows['furniture_status'] == 'Available') { ?>
+                                                                        <!-- Hide This -->
+                                                                        <input type="hidden" name="order_customer_id" value="<?php echo $customer['customer_id']; ?>">
+                                                                        <input type="hidden" name="order_estimated_delivery_date" value="<?php echo date('d M Y', strtotime("+7 day", $today)); ?>">
+                                                                        <input type="hidden" name="order_furniture_id" value="<?php echo $rows['furniture_id']; ?>">
+                                                                        <input type="hidden" name="furniture_price" value="<?php echo $rows['furniture_price']; ?>">
+                                                                        <div class="qty-plus-minus">
+                                                                            <input class="qty-input" type="text" name="order_qty" value="1" />
+                                                                        </div>
+                                                                        <div class="ec-single-cart ">
+                                                                            <button type="submit" name="Add_Order" class="btn btn-primary">Order Item</button>
+                                                                        </div>
+                                                                    <?php } else { ?>
+                                                                        <div class="ec-single-cart ">
+                                                                            <button class="btn btn-danger">Out of stock</button>
+                                                                        </div>
+                                                                    <?php } ?>
                                                                 </div>
-                                                                <div class="ec-single-cart ">
-                                                                    <button class="btn btn-primary">Order Item</button>
-                                                                </div>
-                                                            <?php } else { ?>
-                                                                <div class="ec-single-cart ">
-                                                                    <button class="btn btn-danger">Out of stock</button>
-                                                                </div>
-                                                            <?php } ?>
-                                                        </div>
-                                                    <?php } else { ?>
+                                                        <?php }
+                                                        }
+                                                    } else { ?>
                                                         <div class="ec-single-qty">
                                                             <?php if ($rows['furniture_status'] == 'Available') { ?>
                                                                 <div class="ec-single-cart ">
