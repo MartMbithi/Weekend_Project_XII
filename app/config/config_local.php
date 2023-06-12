@@ -66,9 +66,9 @@
  */
 
 
-$dbuser = "devlanco_sandbox"; /* Database Username */
-$dbpass = "20Devlan@"; /* Database Username Password */
+$dbuser = "root"; /* Database Username */
+$dbpass = ""; /* Database Username Password */
 $host = "localhost"; /* Database Host */
-$db = "devlanco_efurniture_store";  /* Database Name */
+$db = "efurniture_store";  /* Database Name */
 $mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
 date_default_timezone_set("Africa/Nairobi");/* Default Time Zone */
