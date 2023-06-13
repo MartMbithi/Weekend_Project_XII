@@ -53,3 +53,8 @@
             .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
     });
 </script>
+<script>
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+</script>

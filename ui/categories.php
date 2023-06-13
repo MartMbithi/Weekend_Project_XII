@@ -92,7 +92,7 @@ require_once('../app/partials/backoffice_head.php');
                                         <tr>
                                             <td><?php echo $cnt; ?></td>
                                             <td><?php echo $rows['category_name']; ?></td>
-                                            <td><?php echo $rows['category_description']; ?></td>
+                                            <td style="white-space:normal;"><?php echo $rows['category_description']; ?></td>
                                             <td>
                                                 <a data-toggle="modal" href="#update_<?php echo $rows['category_id']; ?>" class="badge badge-pill badge-warning"><em class="fa fa-edit"></em> Edit</a>
                                                 <a data-toggle="modal" href="#delete_<?php echo $rows['category_id']; ?>" class="badge badge-pill badge-danger"><em class="fa fa-trash"></em> Delete</a>
