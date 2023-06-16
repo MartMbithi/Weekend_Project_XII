@@ -89,10 +89,10 @@ require_once('../app/partials/backoffice_head.php');
                                         <th>Item</th>
                                         <th>QTY</th>
                                         <th>Customer</th>
-                                        <th>Seller</th>
                                         <th>Cost</th>
                                         <th>Payment Status</th>
                                         <th>Delivery Status</th>
+                                        <th>Customization</th>
                                         <th>Manage</th>
                                     </tr>
                                 </thead>
@@ -114,10 +114,10 @@ require_once('../app/partials/backoffice_head.php');
                                                 <td><?php echo $rows['furniture_name']; ?></td>
                                                 <td><?php echo $rows['order_qty']; ?></td>
                                                 <td><?php echo $rows['customer_first_name'] . ' ' . $rows['customer_last_name']; ?></td>
-                                                <td><?php echo $rows['seller_first_name'] . ' ' . $rows['seller_last_name']; ?></td>
                                                 <td>Kes <?php echo number_format($rows['order_amount']); ?></td>
                                                 <td><?php echo $rows['order_status']; ?></td>
                                                 <td><?php echo $rows['order_delivery_status']; ?></td>
+                                                <td style="white-space:normal;"><?php echo $rows['order_custom_details']; ?></td>
                                                 <td>
                                                     <?php if ($rows['order_status'] == 'Pending') { ?>
                                                         <a data-toggle="modal" href="#pay_<?php echo $rows['order_id']; ?>" class="badge badge-pill badge-primary"><em class="fa fa-money"></em> Pay</a>
