@@ -230,10 +230,11 @@ if (isset($_POST['Add_Order'])) {
     $order_amount =  mysqli_real_escape_string($mysqli, ($_POST['furniture_price'] * $order_qty));
     $order_date = mysqli_real_escape_string($mysqli, date('d M Y'));
     $order_estimated_delivery_date = mysqli_real_escape_string($mysqli, date('d M Y', strtotime($_POST['order_estimated_delivery_date'])));
+    $order_custom_details = mysqli_real_escape_string($mysqli, $_POST['order_custom_details']);
 
     /* Persist */
-    $add_sql = "INSERT INTO orders(order_customer_id, order_furniture_id, order_ref_code, order_qty, order_amount, order_date, order_estimated_delivery_date)
-    VALUES('{$order_customer_id}', '{$order_furniture_id}', '{$order_ref_code}', '{$order_qty}', '{$order_amount}', '{$order_date}', '{$order_estimated_delivery_date}')";
+    $add_sql = "INSERT INTO orders(order_customer_id, order_furniture_id, order_ref_code, order_qty, order_amount, order_date, order_estimated_delivery_date, order_custom_details)
+    VALUES('{$order_customer_id}', '{$order_furniture_id}', '{$order_ref_code}', '{$order_qty}', '{$order_amount}', '{$order_date}', '{$order_estimated_delivery_date}', '{$order_custom_details}')";
 
     if (mysqli_query($mysqli, $add_sql)) {
         $success = "Order added";

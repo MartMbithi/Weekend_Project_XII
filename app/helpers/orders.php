@@ -72,10 +72,12 @@ if (isset($_POST['Update_Order'])) {
     $order_amount = mysqli_real_escape_string($mysqli, ($order_qty * $_POST['furniture_price']));
     $order_delivery_status = mysqli_real_escape_string($mysqli, $_POST['order_delivery_status']);
     $order_estimated_delivery_date = mysqli_real_escape_string($mysqli, $_POST['order_estimated_delivery_date']);
+    $order_custom_details = mysqli_real_escape_string($mysqli, $_POST['order_custom_details']);
+
 
     /* Persist */
     $update_sql = "UPDATE orders SET order_qty = '{$order_qty}', order_amount  = '{$order_amount}', order_delivery_status = '{$order_delivery_status}', 
-    order_estimated_delivery_date = '{$order_estimated_delivery_date}' WHERE order_id = '{$order_id}'";
+    order_estimated_delivery_date = '{$order_estimated_delivery_date}', order_custom_details = '{$order_custom_details}' WHERE order_id = '{$order_id}'";
 
     if (mysqli_query($mysqli, $update_sql)) {
         $success = "Order updated";
