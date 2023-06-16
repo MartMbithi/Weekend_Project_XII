@@ -78,6 +78,7 @@ require_once('../app/partials/landing_head.php');
     <?php require_once('../app/partials/landing_header.php'); ?>
     <!-- Header End  -->
 
+
     <!-- Ec breadcrumb start -->
     <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
         <div class="container">
@@ -101,69 +102,87 @@ require_once('../app/partials/landing_head.php');
         </div>
     </div>
     <!-- Ec breadcrumb end -->
-    <section class="section ec-releted-product section-space-p">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="section-title">
-                        <h2 class="ec-bg-title">Top Rated Custom Furnitures</h2>
-                        <p class="sub-title">Browse The Collection of Top Furnitures</p>
+
+    <!-- Related Product Start -->
+    <?php if (isset($_POST['Search'])) {
+        $search_keyword = mysqli_real_escape_string($mysqli, $_POST['search_keyword']);
+    ?>
+
+        <section class="section ec-releted-product section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-title">
+                            <h2 class="ec-bg-title">Top Rated Custom Furnitures</h2>
+                            <p class="sub-title">Search results for <?php echo $search_keyword; ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row margin-minus-b-30">
-                <!-- Related Product Content -->
-                <?php
-                $fetch_records_sql = mysqli_query(
-                    $mysqli,
-                    "SELECT * FROM furniture f
-                INNER JOIN furniture_category fc ON fc.category_id = f.furniture_category_id
-                INNER JOIN furniture_seller fs ON fs.seller_id = f.furniture_seller_id
-                "
-                );
-                if (mysqli_num_rows($fetch_records_sql) > 0) {
-                    while ($rows = mysqli_fetch_array($fetch_records_sql)) {
-                ?>
-                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                            <div class="ec-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>" class="image">
-                                            <?php
-                                            $fetch_images_sql = mysqli_query(
-                                                $mysqli,
-                                                "SELECT * FROM furniture_images WHERE 
+                <div class="row margin-minus-b-30">
+                    <!-- Related Product Content -->
+                    <?php
+                    $fetch_records_sql = mysqli_query(
+                        $mysqli,
+                        "SELECT * FROM furniture f
+                        INNER JOIN furniture_category fc ON fc.category_id = f.furniture_category_id
+                        INNER JOIN furniture_seller fs ON fs.seller_id = f.furniture_seller_id
+                        WHERE f.furniture_name LIKE '%$search_keyword%'
+                        "
+                    );
+                    if (mysqli_num_rows($fetch_records_sql) > 0) {
+                        while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                    ?>
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                                <div class="ec-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>" class="image">
+                                                <?php
+                                                $fetch_images_sql = mysqli_query(
+                                                    $mysqli,
+                                                    "SELECT * FROM furniture_images WHERE 
                                                 furniture_image_furniture_id = '{$rows['furniture_id']}'
                                                 ORDER BY RAND() LIMIT 1 "
-                                            );
-                                            if (mysqli_num_rows($fetch_images_sql) > 0) {
-                                                while ($images = mysqli_fetch_array($fetch_images_sql)) {
-                                            ?>
-                                                    <img class="main-image" src="../storage/<?php echo $images['furniture_image']; ?>" alt="Product" />
-                                                    <img class="hover-image" src="../storage/<?php echo $images['furniture_image']; ?>" alt="Product" />
-                                            <?php }
-                                            } ?>
-                                        </a>
+                                                );
+                                                if (mysqli_num_rows($fetch_images_sql) > 0) {
+                                                    while ($images = mysqli_fetch_array($fetch_images_sql)) {
+                                                ?>
+                                                        <img class="main-image" src="../storage/<?php echo $images['furniture_image']; ?>" alt="Product" />
+                                                        <img class="hover-image" src="../storage/<?php echo $images['furniture_image']; ?>" alt="Product" />
+                                                <?php }
+                                                } ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title">
+                                            <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>&cat=<?php echo $rows['category_id']; ?>">
+                                                <?php echo $rows['furniture_name']; ?>
+                                            </a>
+                                        </h5>
+                                        <span class="ec-price">
+                                            <span class="old-price">Kes <?php echo  number_format($rows['furniture_price'] + '5000'); ?></span>
+                                            <span class="new-price">Kes <?php echo  number_format($rows['furniture_price']); ?></span>
+                                        </span>
                                     </div>
                                 </div>
+                            </div>
+                        <?php }
+                    } else { ?>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-6 pro-gl-content">
+                            <div class="ec-product-inner">
                                 <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title">
-                                        <a href="landing_furniture?view=<?php echo $rows['furniture_id']; ?>&cat=<?php echo $rows['category_id']; ?>">
-                                            <?php echo $rows['furniture_name']; ?>
-                                        </a>
+                                    <h5 class="ec-pro-title text-danger">
+                                        Oops! Search Results For <?php echo $search_keyword; ?> Did Not Return Any Results
                                     </h5>
-                                    <span class="ec-price">
-                                        <span class="old-price">Kes <?php echo  number_format($rows['furniture_price'] + '5000'); ?></span>
-                                        <span class="new-price">Kes <?php echo  number_format($rows['furniture_price']); ?></span>
-                                    </span>
                                 </div>
                             </div>
                         </div>
-                <?php }
-                } ?>
+                    <?php } ?>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    <?php } ?>
     <!-- Related Product end -->
 
     <!-- Footer Start -->
