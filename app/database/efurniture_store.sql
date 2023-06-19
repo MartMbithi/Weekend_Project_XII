@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2023 at 02:51 PM
+-- Generation Time: Jun 19, 2023 at 07:23 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -204,17 +204,20 @@ CREATE TABLE `orders` (
   `order_status` varchar(200) NOT NULL DEFAULT 'Pending',
   `order_date` varchar(200) NOT NULL,
   `order_delivery_status` varchar(200) NOT NULL DEFAULT 'Pending',
-  `order_estimated_delivery_date` varchar(200) NOT NULL
+  `order_estimated_delivery_date` varchar(200) NOT NULL,
+  `order_custom_details` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `order_customer_id`, `order_furniture_id`, `order_ref_code`, `order_qty`, `order_amount`, `order_status`, `order_date`, `order_delivery_status`, `order_estimated_delivery_date`) VALUES
-(1, 2, 11, 'ORD-QYLEKU', '3', '13500', 'Paid', '10 Jun 2023', 'On Transit', '2023-06-24'),
-(2, 3, 11, 'ORD-3K2EIN', '4', '18000', 'Paid', '10 Jun 2023', 'On Transit', '2023-07-08'),
-(3, 3, 11, 'ORD-0EO5HP', '3', '13500', 'Paid', '11 Jun 2023', 'Pending', '18 Jun 2023');
+INSERT INTO `orders` (`order_id`, `order_customer_id`, `order_furniture_id`, `order_ref_code`, `order_qty`, `order_amount`, `order_status`, `order_date`, `order_delivery_status`, `order_estimated_delivery_date`, `order_custom_details`) VALUES
+(1, 2, 11, 'ORD-QYLEKU', '3', '13500', 'Paid', '10 Jun 2023', 'On Transit', '2023-06-24', NULL),
+(2, 3, 11, 'ORD-3K2EIN', '4', '18000', 'Paid', '10 Jun 2023', 'On Transit', '2023-07-08', NULL),
+(3, 3, 11, 'ORD-0EO5HP', '3', '13500', 'Paid', '11 Jun 2023', 'Pending', '18 Jun 2023', NULL),
+(5, 2, 14, 'ORD-KB5X3O', '2', '11000', 'Pending', '16 Jun 2023', 'Pending', '23 Jun 2023', 'Use mahogany, mettalic legs, make sure  they are painted black, the table top is round. Add artistic capentry decorations on the table edges.'),
+(6, 2, 11, 'ORD-MWQC4Y', '1', '4500', 'Pending', '16 Jun 2023', 'Pending', '23 Jun 2023', '');
 
 -- --------------------------------------------------------
 
@@ -357,7 +360,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `payment`
